@@ -1,5 +1,11 @@
 # Rescue-Robot
-Saving and taking lives
+
+#
+### Allgemeines zum Projekt
+Die Übersicht über die geplante und getane Arbeit für jede Woche ist mit GitHub-Projects umgesetzt:  
+[Project Boards][projects]
+
+Die Allgemeine Übersicht über die gesamten Aufgaben ist auf [Trello][trello] zu finden.
 
 #
 ### Requirements
@@ -17,3 +23,8 @@ Saving and taking lives
 | Sensorik           | FR6    | Das Fahrzeug muss Radiosignalen folgen können                                          |
 |                    | FR7    | Das Fahrzeug muss erkennen ob es im Wasser ist                                         |
 |                    | NFR8   | Das Fahrzeug muss über geeignete Peripherie verfügen  um mit Menschen zu kommunizieren |
+
+
+
+[projects]: https://github.com/BrunoBerger/Rescue-Robot/projects
+[trello]: https://trello.com/b/mJtKk2EW/rescue-robot
