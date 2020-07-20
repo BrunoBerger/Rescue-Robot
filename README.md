@@ -6,8 +6,8 @@ Der Rescue-Robot soll sich autonom auf dem Industriegelände bewegen und sich ü
 
 # Produkteinsatz
 Die Zielgruppe sind somit nicht nur das Industriegewerbe selbst, sondern auch Rettungsdienste und die direkten Angestellten der Industriefirma.
-<img >
 ![Systemumgebung](Diagramme/Steakholder.png "Systemumgebung")
+
 #
 ### Allgemeines zum Projekt
 Die Übersicht über die geplante und getane Arbeit für jede Woche ist mit GitHub-Projects umgesetzt:  
