@@ -2,11 +2,16 @@
 In Fällen wie Naturkatastrophen oder schweren Industrieunfällen ist es meist dringend notwendig, verletzte Personen zu retten oder Gegenstände zu bergen.
 Um dabei nicht andere Menschen den Risiken oder Gefahren auszusetzen, ist es sehr hilfreich, Roboter einzusetzen. In diesem Projekt soll ein "Rescue-Robot"
 entwickelt werden, der bei einem Industrieunfall wie einer Explosion seinen Einsatz findet. Bei der Explosion wurden auch radioaktive Objekte auf dem Industriegelände verteilt.
-Der Rescue-Robot soll sich autonom auf dem Industriegelände bewegen und sich über Radiosignale navigieren. Hindernisse wie Gesteinsbrocken oder Wasser sollen umfahren oder durchquert werden. Verletzte Personen sollen über den Rescue-Robot nach außen kommunizieren können. Zudem sollen auch radioaktive Gegenstände gesichert werden können.
 
-# Produkteinsatz
-Die Zielgruppe sind somit nicht nur das Industriegewerbe selbst, sondern auch Rettungsdienste und die direkten Angestellten der Industriefirma.
+#
+### Produkteinsatz
+Zur Zielgruppe gehören nicht nur das Industriegewerbe selbst, sondern auch Rettungsdienste und die direkten Angestellten der Firma.
 ![Systemumgebung](Diagramme/Steakholder.png "Systemumgebung")
+
+#
+### Einsatzgebiet
+Der Rescue-Robot soll sich autonom auf dem Industriegelände bewegen und sich über Radiosignale navigieren. Hindernisse wie Gesteinsbrocken oder Wasser sollen umfahren oder durchquert werden. Verletzte Personen sollen über den Rescue-Robot nach außen kommunizieren können. Zudem sollen auch radioaktive Gegenstände gesichert werden können.
+![Einsatzgebiet](Diagramme/Environment.png "Einsatzgebiet")
 
 #
 ### Allgemeines zum Projekt
