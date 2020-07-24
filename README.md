@@ -5,7 +5,7 @@ entwickelt werden, der bei einem Industrieunfall wie einer Explosion seinen Eins
 
 #
 ### Produkteinsatz
-Zur Zielgruppe gehören nicht nur das Industriegewerbe selbst, sondern auch Rettungsdienste und die direkten Angestellten der Firma.
+Zur Zielgruppe gehören nicht nur das Industriegewerbe selbst, sondern auch Rettungsdienste, die direkten Angestellten der Firma, sowie das Firmengelände selbst.
 ![Systemumgebung](Diagramme/Steakholder.png "Systemumgebung")
 
 #
