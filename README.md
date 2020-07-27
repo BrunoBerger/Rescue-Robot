@@ -20,22 +20,70 @@ Die Übersicht über die geplante und getane Arbeit für jede Woche ist mit GitH
 
 Die Allgemeine Übersicht über die gesamten Aufgaben ist auf [Trello][trello] zu finden.
 
+In diesem Repo wird separat die Möglichkeit einer Umsetzung der Umgebung in Unity getestet:
+https://github.com/BrunoBerger/rescueBot_UnityEnv
+
 #
 ### Requirements
 
-| Category           | ID     | Requirement                                                                            |
-|--------------------|--------|----------------------------------------------------------------------------------------|
-| Fortbewegung       | FR1    | Fahrzeug muss sich an Land fortbewegen können                                          |
-|                    | NFR1   | Fortbewegung muss über Ketten laufen                                                   |
-|                    | FR2    | Fahrzeug muss sich auf der Wasseroberfläche fortbewegen können                         |
-|                    | NFR2   | Fortbewegung muss über zwei Propeller laufen                                           |
-| Gegenstände bergen | FR3    | Das Fahrzeug muss Gegenstände greifen können                                           |
-|                    | NFR3.1 | Das Fahrzeug muss über einen beweglichen Greifer verfügen                              |
-|                    | FR4    | Das Fahrzeug muss über einen verschließbaren Behälter verfügen                         |
-|                    | NFR5   | Das Fahrzeug muss über einen offenen Korb verfügen                                     |
-| Sensorik           | FR6    | Das Fahrzeug muss Radiosignalen folgen können                                          |
-|                    | FR7    | Das Fahrzeug muss erkennen ob es im Wasser ist                                         |
-|                    | NFR8   | Das Fahrzeug muss über geeignete Peripherie verfügen  um mit Menschen zu kommunizieren |
+<table>
+<thead>
+  <tr>
+    <th>Category</th>
+    <th>ID</th>
+    <th>Requirement</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td rowspan="4">Fortbewegung</td>
+    <td>FR1</td>
+    <td>Fahrzeug muss sich an Land fortbewegen können</td>
+  </tr>
+  <tr>
+    <td>NFR1</td>
+    <td>Fortbewegung muss über Ketten laufen</td>
+  </tr>
+  <tr>
+    <td>FR2</td>
+    <td>Fahrzeug muss sich auf der Wasseroberfläche fortbewegen können</td>
+  </tr>
+  <tr>
+    <td>NFR2</td>
+    <td>Fortbewegung muss über zwei Propeller laufen</td>
+  </tr>
+  <tr>
+    <td rowspan="4">Gegenstände bergen</td>
+    <td>FR3</td>
+    <td>Das Fahrzeug muss Gegenstände greifen können</td>
+  </tr>
+  <tr>
+    <td>NFR3.1</td>
+    <td>Das Fahrzeug muss über einen beweglichen Greifer verfügen</td>
+  </tr>
+  <tr>
+    <td>FR4</td>
+    <td>Das Fahrzeug muss über einen verschließbaren Behälter verfügen</td>
+  </tr>
+  <tr>
+    <td>NFR5</td>
+    <td>Das Fahrzeug muss über einen offenen Korb verfügen</td>
+  </tr>
+  <tr>
+    <td rowspan="3">Sensorik</td>
+    <td>FR6</td>
+    <td>Das Fahrzeug muss Radiosignalen folgen können </td>
+  </tr>
+  <tr>
+    <td>FR7</td>
+    <td>Das Fahrzeug muss erkennen ob es im Wasser ist</td>
+  </tr>
+  <tr>
+    <td>NFR8</td>
+    <td>Das Fahrzeug muss über geeignete Peripherie verfügen <br>um mit Menschen zu kommunizieren</td>
+  </tr>
+</tbody>
+</table>
 
 
 
