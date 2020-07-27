@@ -67,7 +67,7 @@ https://github.com/BrunoBerger/rescueBot_UnityEnv
   </tr>
   <tr>
     <td>NFR5</td>
-    <td>Das Fahrzeug muss über einen offenen Korb verfügen</td>
+    <td>Das Fahrzeug muss über einen offenen Behälter verfügen</td>
   </tr>
   <tr>
     <td rowspan="3">Sensorik</td>
