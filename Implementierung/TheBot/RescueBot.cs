@@ -7,8 +7,8 @@ namespace Implementierung
         static void Main(string[] args)
         {
             Console.WriteLine("Lass wen retten");
-            Zange zange1 = new Zange();
-            zange1.zuMachen();
+            Greifer greifer = new Greifer();
+            greifer.schliessen();
         }
     }
 }
