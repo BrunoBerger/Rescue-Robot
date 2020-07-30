@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Bruno\\github\\Rescue-Robot\\Implementierung\\TheBot\\Implementierung.csproj": {}
+    "C:\\Users\\walte\\Documents\\GitHub\\Rescue-Robot\\Implementierung\\TheBot\\Implementierung.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Bruno\\github\\Rescue-Robot\\Implementierung\\TheBot\\Implementierung.csproj": {
+    "C:\\Users\\walte\\Documents\\GitHub\\Rescue-Robot\\Implementierung\\TheBot\\Implementierung.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Bruno\\github\\Rescue-Robot\\Implementierung\\TheBot\\Implementierung.csproj",
+        "projectUniqueName": "C:\\Users\\walte\\Documents\\GitHub\\Rescue-Robot\\Implementierung\\TheBot\\Implementierung.csproj",
         "projectName": "Implementierung",
-        "projectPath": "C:\\Users\\Bruno\\github\\Rescue-Robot\\Implementierung\\TheBot\\Implementierung.csproj",
-        "packagesPath": "C:\\Users\\Bruno\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Bruno\\github\\Rescue-Robot\\Implementierung\\TheBot\\obj\\",
+        "projectPath": "C:\\Users\\walte\\Documents\\GitHub\\Rescue-Robot\\Implementierung\\TheBot\\Implementierung.csproj",
+        "packagesPath": "C:\\Users\\walte\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\walte\\Documents\\GitHub\\Rescue-Robot\\Implementierung\\TheBot\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Bruno\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\walte\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
