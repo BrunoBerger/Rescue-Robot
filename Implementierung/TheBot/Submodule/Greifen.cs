@@ -34,14 +34,7 @@ public class ZugkraftAufnehmer
 	}
 }
 
-public class Objekt
-{
-	int gewichtKG;
-	public Objekt(int m)
-	{
-		gewichtKG = m;
-	}
-}
+
 
 public class Stützklappe
 {
