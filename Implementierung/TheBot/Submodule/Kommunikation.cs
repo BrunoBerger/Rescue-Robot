@@ -2,7 +2,8 @@ using System;
 
 namespace Implementierung
 {
-public class Kommunikation
+
+public class Kamera
 {
     public void schaltetEin()
     {
@@ -11,14 +12,28 @@ public class Kommunikation
     public void erkennePerson()
     {
 
-    }
-        public void sprichAn()
+    }    
+}
+
+public class Mikrofon
+{
+    
+    public void schaltetEin()
     {
 
     }
-        public void sendetNachricht()
+    public void sendetNachricht()
     {
 
     }
 }
+
+public class Lautsprecher
+{
+    public void sprichAn()
+    {
+
+    }
+}
+
 }

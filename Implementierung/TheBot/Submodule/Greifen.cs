@@ -47,7 +47,7 @@ public class Stützklappe
 		
 	}
 }
-public class boxDeckel
+public class BoxDeckel
 {
 	public void oeffnen()
 	{
