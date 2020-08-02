@@ -59,8 +59,50 @@ public class Radiosignal
 public class Person
 {
     // ToDo: Position über float / int? einheitlich für alle umsetzen
-    float position;
+    int positionX;
+    int positionY;
     string Verletzungsart;
 }
 
 }
+
+/*
+Das Firmengelände könnten wir neben dem was Bruno in UNity aufbaut so in der Console Lösen.
+So lässt sich das Gelände einfach verändern und wir können zeigen das unsere Algorithmen unter verschiedenen Bedingungen funktionieren
+
+{
+[M, M, M, M, M, M, M, M, M, M, M, M, M, M, M, M, M, M, M, M],
+[M, F, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, F, M],
+[M, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, M],
+[M, 0, 0, 0, 0, 0, 0, 0, B, 0, 0, 0, 0, B, 0, 0, 0, 0, 0, M],
+[M, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, H, H, H, 0, M],
+[M, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, H, H, H, 0, M],
+[M, 0, 0, H, H, 0, 0, 0, H, 0, 0, 0, 0, 0, 0, H, H, H, 0, M],
+[M, 0, 0, H, H, 0, 0, 0, H, H, H, 0, 0, 0, 0, H, H, H, 0, M],
+[M, 0, 0, H, H, 0, B, 0, H, H, H, 0, 0, 0, 0, 0, 0, 0, 0, M],
+[M, 0, 0, 0, 0, 0, 0, 0, H, H, H, 0, 0, 0, H, 0, 0, 0, 0, M],
+[M, 0, 0, 0, 0, 0, 0, 0, H, H, H, 0, 0, 0, H, 0, 0, 0, 0, M],
+[M, 0, B, 0, 0, 0, 0, 0, H, W, W, 0, 0, 0, H, H, 0, 0, 0, M],
+[M, 0, 0, 0, 0, 0, 0, 0, W, W, W, 0, 0, 0, H, H, 0, 0, 0, M],
+[M, 0, 0, H, H, 0, 0, 0, W, W, W, 0, 0, 0, 0, 0, 0, 0, 0, M],
+[M, 0, 0, H, H, 0, 0, 0, W, W, W, 0, 0, 0, 0, 0, 0, 0, 0, M],
+[M, 0, 0, H, H, 0, W, W, W, W, W, 0, 0, 0, 0, 0, 0, 0, 0, M],
+[M, 0, 0, 0, 0, 0, W, W, W, W, W, 0, H, H, H, 0, 0, 0, B, M],
+[M, 0, 0, 0, 0, 0, W, W, W, W, W, 0, 0, 0, 0, 0, 0, 0, 0, M],
+[M, 0, 0, 0, 0, 0, W, W, W, W, W, 0, P, 0, 0, 0, 0, 0, 0, M],
+[M, 0, 0, 0, 0, 0, 0, H, H, 0, 0, 0, 0, 0, B, 0, 0, 0, 0, M],
+[M, S, 0, 0, 0, 0, 0, H, H, 0, 0, 0, 0, 0, 0, 0, 0, 0, F, M],
+[M, M, M, M, M, M, M, M, M, M, M, M, M, M, M, M, M, M, M, M]
+}
+
+20 x 20 
+
+H = Hinderniss
+B = Objekt was zum bergen
+W = Wasser
+0 = Freiefahrt
+M = Äußere begrenzung
+S = Startpunkt
+F = Funkturm
+
+*/
