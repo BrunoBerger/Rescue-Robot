@@ -55,4 +55,12 @@ public class Radiosignal
     // TODO: Model um ne variable für die ID erweitern
     int ID;
 }
+
+public class Person
+{
+    // ToDo: Position über float / int? einheitlich für alle umsetzen
+    float position;
+    string Verletzungsart;
+}
+
 }
