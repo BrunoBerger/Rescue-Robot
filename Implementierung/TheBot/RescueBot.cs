@@ -2,6 +2,26 @@
 
 namespace Implementierung
 {
+    public class Motor
+    {
+        int maxDrehzahl;
+        string motorName;
+        bool motorState;        // True = on   False = off
+        
+        public void empfangeSignal()
+        {
+
+        }
+        public void motorOff()
+        {
+
+        }
+        public void motorOn()
+        {
+
+        }
+    }
+
     class RescueBot
     {
         int eigenePositionX;
@@ -76,7 +96,7 @@ namespace Implementierung
         {
             
         }     
-           
+
         static void Main(string[] args)
         {
             Console.WriteLine("Lass wen retten");
