@@ -46,4 +46,13 @@ public class Geigerzaehler
         return wert;
     }
 }
+
+public class ZugDruckaufnehmer
+{
+    public double ermittleGewicht()
+    {
+        double wert = 1.1;
+        return wert;
+    }
+}
 }
