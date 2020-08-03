@@ -2,8 +2,101 @@
 
 namespace Implementierung
 {
+    public class Motor
+    {
+        int maxDrehzahl;
+        string motorName;
+        bool motorState;        // True = on   False = off
+        
+        public void empfangeSignal()
+        {
+
+        }
+        public void motorOff()
+        {
+
+        }
+        public void motorOn()
+        {
+
+        }
+    }
+
     class RescueBot
     {
+        int eigenePositionX;
+        int eigenePositionY;
+
+        public void erknneStandort()
+        {
+            
+        }
+        public void signalAbfrage()
+        {
+            
+        }
+        public void empfangeSignal()
+        {
+            
+        }
+        public void verfolgeSignal()
+        {
+            
+        }
+        public void fahreVorwearts()
+        {
+            
+        }
+        public void fahreRueckwaerts()
+        {
+            
+        }
+        public void fahreLinks()
+        {
+            
+        }
+        public void fahreRechts()
+        {
+            
+        }
+        public void schwimmeVorwaerts()
+        {
+            
+        }
+        public void schwimmeRueckwaerts()
+        {
+            
+        }
+        public void schwimmeLinks()
+        {
+            
+        }
+        
+        public void schwimmeRechts()
+        {
+            
+        }
+        
+        public void stoppen()
+        {
+            
+        }
+        
+        public void messenObjekt()
+        {
+            
+        }
+        
+        public void greifen()
+        {
+            
+        }
+        
+        public void ablegenObjekt()
+        {
+            
+        }     
+
         static void Main(string[] args)
         {
             Console.WriteLine("Lass wen retten");
