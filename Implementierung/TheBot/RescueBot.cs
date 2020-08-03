@@ -27,7 +27,7 @@ namespace Implementierung
         int eigenePositionX;
         int eigenePositionY;
 
-        public void erknneStandort()
+        public void erkenneStandort()
         {
             
         }
