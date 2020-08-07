@@ -33,6 +33,9 @@ public class Firmengelände
     };
 /*
 
+!Alles auf englisch!
+!Objekte im array verwenden! maybe
+
 22 x 20 
 
 H = Hinderniss
@@ -46,6 +49,8 @@ F = Funkturm
 */
 
 }
+
+// objekt sollte auf keinen fall objekt heißen
 
 public class Objekt
 {
