@@ -10,16 +10,25 @@ public class Antenna
     }
 }
 
-public class Left : Antenna
+public class LeftAntenna : Antenna
 {
-
+    public LeftAntenna()
+    {
+        Console.WriteLine("Left Antenna started!");
+    }
 }
-public class Right : Antenna
+public class RightAntenna : Antenna
 {
-    
+    public RightAntenna()
+    {
+        Console.WriteLine("Right Antenna started!");
+    }
 }
-public class Backside : Antenna
+public class BacksideAntenna : Antenna
 {
-    
+    public BacksideAntenna()
+    {
+        Console.WriteLine("Backside Antenna started!");
+    }
 }
 }

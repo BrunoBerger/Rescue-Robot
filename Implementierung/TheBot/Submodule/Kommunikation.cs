@@ -17,6 +17,10 @@ public class Peripherie
 }
 public class Camera : Peripherie
 {
+    public Camera()
+    {
+        Console.WriteLine("Camera started!");
+    }
     public void detectPerson()
     {
 
@@ -25,6 +29,10 @@ public class Camera : Peripherie
 
 public class Microphon : Peripherie
 {
+    public Microphon()
+    {
+        Console.WriteLine("Microphon started!");
+    }
     public void sendMessage()
     {
 
@@ -33,6 +41,10 @@ public class Microphon : Peripherie
 
 public class Loudspeaker : Peripherie
 {
+    public Loudspeaker()
+    {
+        Console.WriteLine("Loudspeaker started!");
+    }
     public void sendMessage()
     {
 

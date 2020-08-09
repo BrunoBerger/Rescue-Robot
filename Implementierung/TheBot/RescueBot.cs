@@ -103,36 +103,31 @@ namespace Implementierung
         {
             Console.WriteLine("Lass wen retten");
 
-            // Greifen subsystem:
-            /*
-            
-            Greifarm greifarm = new Greifarm();
-            Greifer greifer = new Greifer();
-            ZugkraftAufnehmer zugSensor = new ZugkraftAufnehmer();
-            Stützklappe stütze = new Stützklappe();
-            BoxDeckel boxDeckel = new BoxDeckel();
+            // Greifer Subsystem
+            Grappler grappler = new Grappler();
+            Gripper gripper = new Gripper();
+            ForceTransducer forceTransducer = new ForceTransducer();
+            Support support = new Support();
+            BoxCover boxCover = new BoxCover();
 
             // Kommunikation-Subsystem:
-            Kamera kamera = new Kamera();
-            Mikrofon mikrofon = new Mikrofon();
-            Lautsprecher lautsprecher = new Lautsprecher();
+            Camera camera = new Camera();
+            Microphon microphon = new Microphon();
+            Loudspeaker loudspeaker = new Loudspeaker();
 
             // Navigation-Subsystem:
             Navigation navigation = new Navigation();
 
-            // Signalverfolgung-Subsystem:
-            Signalverfolgung signalverfolgung = new Signalverfolgung();
+            //Signalverfolgung-Subsystem:
+            LeftAntenna leftAntenna = new LeftAntenna();
+            RightAntenna rightAntenna = new RightAntenna();
+            BacksideAntenna backsideAntenna = new BacksideAntenna();
 
-            // Objektbergung-Subsystem:
-            Objektbergung objektbergung = new Objektbergung();
-            LIDARSensor LIDARSensor = new LIDARSensor();
-            Geigerzaehler geigerzaehler = new Geigerzaehler();
-
-            // test
-            greifer.schliessen();
-
-
-            */
+            //Objektbergung-Subsystem:
+            LIDARSensor lidarSensor = new LIDARSensor();
+            GeigerCounter geigerCounter = new GeigerCounter();
+            
+            Premises premises = new Premises();
         }
     }
 }

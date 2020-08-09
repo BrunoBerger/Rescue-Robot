@@ -5,6 +5,12 @@ namespace Implementierung
 
 public class LIDARSensor
 {
+
+    public LIDARSensor()
+    {
+        Console.WriteLine("LIDAR Sensor started!");
+    }
+
     int sensorID;
     public void detectObstacle()
     {
@@ -19,6 +25,11 @@ public class LIDARSensor
 
 public class GeigerCounter
 {
+    public GeigerCounter()
+    {
+        Console.WriteLine("Geiger Counter started!");
+    }
+
     int sensorID;
     public int measureRadioactivity()
     {
@@ -34,6 +45,11 @@ public class GeigerCounter
 
 public class ForceTransducer
 {
+    public ForceTransducer()
+    {
+        Console.WriteLine("Force Transducer started!");
+    }
+    
 	public double measure_acting_force()
 	{
 		double force = 100.1;

@@ -4,6 +4,10 @@ namespace Implementierung
 {
 public class Premises
 {
+    public Premises()
+    {
+        Console.WriteLine("Premises started!");
+    }
     int length;
     int width;
    
@@ -50,6 +54,10 @@ F = Funkturm
 
 public class Obstacle
 {
+    public Obstacle()
+    {
+        Console.WriteLine("Obstacle generated!");
+    }
 	int weightKG;
 	int size;
 }
@@ -57,6 +65,11 @@ public class Obstacle
 
 public class RadioactiveObstacle : Obstacle
 {
+    
+    public RadioactiveObstacle()
+    {
+        Console.WriteLine("Radioactive Obstacle generated!");
+    }
     int radioactiveValue;
 }
 
@@ -67,26 +80,53 @@ public class Water
 
 public class Wall
 {
+    public Wall()
+    {
+        Console.WriteLine("Wall Generated!");
+    }
 
 }
 public class Fog
 {
-
+    // im Diagramm hinzufügen
+    int positionX;
+    int positionY;
+    public Fog()
+    {
+        Console.WriteLine("Fog Generated!");
+    }
 }
 public class PieceOfRock
 {
-
+    // im Diagramm hinzufügen
+    int positionX;
+    int positionY;
+    public PieceOfRock()
+    {
+        Console.WriteLine("Piece of Rock Generated!");
+    }
 }
 public class StrongGround
 {
-
+    // im Diagramm hinzufügen
+    int positionX;
+    int positionY;
+    public StrongGround()
+    {
+        Console.WriteLine("Strong Ground Generated!");
+    }
 }
 public class RadioTower
 {
-    // TODO: Model um ne variable für die Koordinaten erweitern
     int coordinateX;
     int coordinateY;
     string ID;
+    public RadioTower()
+    {
+        Console.WriteLine("Radio Tower Generated!");
+    }
+    // TODO: Model um ne variable für die Koordinaten erweitern
+
 }
 public class RadioSignal
 {
@@ -96,10 +136,16 @@ public class RadioSignal
 
 public class Person
 {
-    // ToDo: Position über float / int? einheitlich für alle umsetzen
     int positionX;
     int positionY;
     string kindOfHurt;
+
+    public Person(int positionX, int positionY, string kindOfHurt)
+    {
+        Console.WriteLine("Person Generated!");
+    }
+    // ToDo: Position über float / int? einheitlich für alle umsetzen
+
 }
 
 }
