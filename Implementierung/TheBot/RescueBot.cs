@@ -127,7 +127,10 @@ namespace Implementierung
             LIDARSensor lidarSensor = new LIDARSensor();
             GeigerCounter geigerCounter = new GeigerCounter();
             
-            Premises premises = new Premises();
+            Premises premises = new Premises(20,20);
+
+            Obstacle obstacle1 = new Obstacle(10,10,6,19);
+            RadioactiveObstacle obs2 = new RadioactiveObstacle(10,33,56,14,11);
         }
     }
 }

@@ -4,13 +4,14 @@ namespace Implementierung
 {
 public class Premises
 {
-    public Premises()
-    {
-        Console.WriteLine("Premises started!");
-    }
     int length;
     int width;
-   
+    public Premises(int Length, int Width)
+    {
+        this.length = Length;
+        this.width = Width;
+        Console.WriteLine("Premises started!");
+    }
     string[,] mapArr = new string[22, 20] {
         {"X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X"},
         {"X", "F", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "F", "X"},
@@ -54,10 +55,17 @@ F = Funkturm
 
 public class Obstacle
 {
-    public Obstacle()
+    public Obstacle(int Weight, int Size, int PositionX, int PositionY)
     {
-        Console.WriteLine("Obstacle generated!");
+        this.positionX = PositionX;
+        this.positionY = PositionY;
+        this.weightKG = Weight;
+        this.size = Size;
+
+        Console.WriteLine("Obstacle generated: X: {0} , Y: {1}", positionX,positionY);
     }
+    int positionX;
+    int positionY;
 	int weightKG;
 	int size;
 }
@@ -65,12 +73,20 @@ public class Obstacle
 
 public class RadioactiveObstacle : Obstacle
 {
-    
-    public RadioactiveObstacle()
-    {
-        Console.WriteLine("Radioactive Obstacle generated!");
-    }
+    int weightKG;
+    int size;
+    int positionX;
+    int positionY;
     int radioactiveValue;
+    public RadioactiveObstacle(int Weight, int Size, int PositionX, int PositionY, int Radiation) : base(Weight, Size, PositionX,PositionY)
+    {
+        this.weightKG = Weight;
+        this.size = Size;
+        this.positionX = PositionX;
+        this.positionY = PositionY;
+        this.radioactiveValue = Radiation;   
+        Console.WriteLine("Radioactive Obstacle generated! X: {0} , Y: {1} , KG: {2} , Size: {3} ,Rad: {4}", this.positionX,this.positionY,this.weightKG,this.size,this.radioactiveValue);
+    }
 }
 
 public class Water
