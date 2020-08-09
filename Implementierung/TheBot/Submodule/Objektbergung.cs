@@ -2,57 +2,43 @@ using System;
 
 namespace Implementierung
 {
-public class Objektbergung
-{
-    public void erkenne_Objekt()
-    {
-
-    }
-    public void messe_Radioaktivität()
-    {
-
-    }
-        public void sendeWert()
-    {
-
-    }
-}
 
 public class LIDARSensor
 {
     int sensorID;
-    public void erkenneObjekt()
+    public void detectObstacle()
     {
 
     }
-    public int sendeSignal()
+    public int sendSignal()
     {
         int signal = 1337;
         return signal;
     }
 }
 
-public class Geigerzaehler
+public class GeigerCounter
 {
     int sensorID;
-    public int misst_Radioaktivitaet()
+    public int measureRadioactivity()
     {
         int radioaktivitaet = 420;
         return radioaktivitaet;
     }
-    public int sendetWert()
+    public int sendValue()
     {
         int wert = 9;
         return wert;
     }
 }
 
-public class ZugDruckaufnehmer
+public class ForceTransducer
 {
-    public double ermittleGewicht()
-    {
-        double wert = 1.1;
-        return wert;
-    }
+	public double measure_acting_force()
+	{
+		double force = 100.1;
+		return force;
+	}
 }
+
 }

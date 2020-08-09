@@ -2,12 +2,12 @@ using System;
 
 namespace Implementierung
 {
-public class Firmengelände
+public class Premises
 {
-    int laenge;
-    int breite;
+    int length;
+    int width;
    
-    string[,] MapArr = new string[22, 20] {
+    string[,] mapArr = new string[22, 20] {
         {"X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X"},
         {"X", "F", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "F", "X"},
         {"X", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "X"},
@@ -33,9 +33,6 @@ public class Firmengelände
     };
 /*
 
-!Alles auf englisch!
-!Objekte im array verwenden! maybe
-
 22 x 20 
 
 H = Hinderniss
@@ -50,51 +47,48 @@ F = Funkturm
 
 }
 
-// objekt sollte auf keinen fall objekt heißen
 
-public class Objekt
+public class Obstacle
 {
-	int gewichtKG;
-	int groesze;
-	public Objekt(int m)
-	{
-		gewichtKG = m;
-	}
+	int weightKG;
+	int size;
 }
 
-public class RadioaktivesObjekt : Object
+
+public class RadioactiveObstacle : Obstacle
 {
-    int strahlungswert;
+    int radioactiveValue;
 }
-public class Wasserloch
+
+public class Water
 {
 
 }
 
-public class Wand
+public class Wall
 {
 
 }
-public class NebelRauch
+public class Fog
 {
 
 }
-public class Gesteinsbrocken
+public class PieceOfRock
 {
 
 }
-public class FesterUntergrund
+public class StrongGround
 {
 
 }
-public class Antennenmast
+public class RadioTower
 {
     // TODO: Model um ne variable für die Koordinaten erweitern
-    int koordinateX;
-    int koordinateY;
+    int coordinateX;
+    int coordinateY;
     string ID;
 }
-public class Radiosignal
+public class RadioSignal
 {
     // TODO: Model um ne variable für die ID erweitern
     int ID;
@@ -105,7 +99,7 @@ public class Person
     // ToDo: Position über float / int? einheitlich für alle umsetzen
     int positionX;
     int positionY;
-    string Verletzungsart;
+    string kindOfHurt;
 }
 
 }

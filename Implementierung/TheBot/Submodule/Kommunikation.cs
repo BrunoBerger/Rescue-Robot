@@ -3,37 +3,39 @@ using System;
 namespace Implementierung
 {
 
-public class Kamera
+
+public class Peripherie
 {
-    public void schaltetEin()
+    public void turnOn()
     {
 
     }
-    public void erkennePerson()
+    public void turnOff()
+    {
+
+    }
+}
+public class Camera : Peripherie
+{
+    public void detectPerson()
     {
 
     }    
 }
 
-public class Mikrofon
+public class Microphon : Peripherie
 {
-    
-    public void schaltetEin()
-    {
-
-    }
-    public void sendetNachricht()
+    public void sendMessage()
     {
 
     }
 }
 
-public class Lautsprecher
+public class Loudspeaker : Peripherie
 {
-    public void sprichAn()
+    public void sendMessage()
     {
 
     }
 }
-
 }

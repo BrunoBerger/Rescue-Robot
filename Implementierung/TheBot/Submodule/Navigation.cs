@@ -4,11 +4,11 @@ namespace Implementierung
 {
 public class Navigation
 {
-    public void erkenneHindernis()
+    public void detectBarrier()
     {
 
     }
-    public void erkenneWasser()
+    public void detectWater()
     {
 
     }

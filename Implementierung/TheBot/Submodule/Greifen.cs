@@ -3,59 +3,70 @@ using System;
 namespace Implementierung
 {
 
-public class Greifarm
+public class Grappler
 {
 	int position;
-	int zielposition;
+	int target_position;
 
-	public void drehen()
+	public void extend_out()
 	{
 
 	}
-	public void zielposition_anfahren()
+	public void liftObstacle()
+	{
+
+	}
+	public void move_towards_box_pos()
+	{
+		
+	}
+	public void rotate()
+	{
+
+	}
+	public void move_to_target_position()
 	{
 
 	}
 }
-public class Greifer
+public class Gripper
 {
 	// TODO: Model um ne variable für den greifer ergänzen
-    public void schliessen()
+    public void closeGripper()
     {
-        Console.WriteLine("Mache Zange zu");
+        Console.WriteLine("Closes Gripper!");
     }
-}
-public class ZugkraftAufnehmer
-{
-	public int wirkendeKraft_messen()
+	public void openGripper()
 	{
-		int kraft = 100;
-		return kraft;
+		Console.WriteLine("Opens Gripper!");
 	}
+
 }
 
 
 
-public class Stützklappe
+public class Support
+//Stützklappe!
 {
-	public void ausfahren()
+	public void extend()
+	// Im Diagramm ändern! Dort als "ascend" angegeben
 	{
-
+		Console.WriteLine("Support is extendet!");
 	}
-	public void einfahren()
+	public void retract()
 	{
-		
+		Console.WriteLine("Support is retracted!");
 	}
 }
-public class BoxDeckel
+public class BoxCover
 {
-	public void oeffnen()
+	public void openCover()
 	{
-
+		Console.WriteLine("Box cover is open!");
 	}
-	public void schliessen()
+	public void closeCover()
 	{
-		
+		Console.WriteLine("Box cover is closed!");
 	}
 }
 

@@ -4,11 +4,13 @@ namespace Implementierung
 {
     public class Motor
     {
-        int maxDrehzahl;
+        int maxSpeed;
         string motorName;
         bool motorState;        // True = on   False = off
-        
-        public void empfangeSignal()
+        int startPoint;
+        int endPoint;
+
+        public void getSignal()
         {
 
         }
@@ -24,75 +26,75 @@ namespace Implementierung
 
     class RescueBot
     {
-        int eigenePositionX;
-        int eigenePositionY;
+        int locationX;
+        int locationY;
 
-        public void erkenneStandort()
+        public void detectLocation()
         {
             
         }
-        public void signalAbfrage()
+        public void signalRequest()
         {
             
         }
-        public void empfangeSignal()
+        public void getSignal()
         {
             
         }
-        public void verfolgeSignal()
+        public void trackSignal()
         {
             
         }
-        public void fahreVorwearts()
+        public void driveForward()
         {
             
         }
-        public void fahreRueckwaerts()
+        public void driveBackward()
         {
             
         }
-        public void fahreLinks()
+        public void driveLeft()
         {
             
         }
-        public void fahreRechts()
+        public void driveRight()
         {
             
         }
-        public void schwimmeVorwaerts()
+        public void swimForward()
         {
             
         }
-        public void schwimmeRueckwaerts()
+        public void swimBackward()
         {
             
         }
-        public void schwimmeLinks()
-        {
-            
-        }
-        
-        public void schwimmeRechts()
+        public void swimLeft()
         {
             
         }
         
-        public void stoppen()
+        public void swimRight()
         {
             
         }
         
-        public void messenObjekt()
+        public void stop()
         {
             
         }
         
-        public void greifen()
+        public void measureObstacle()
         {
             
         }
         
-        public void ablegenObjekt()
+        public void grip()
+        {
+            
+        }
+        
+        public void collectObstacle()
         {
             
         }     
@@ -102,6 +104,8 @@ namespace Implementierung
             Console.WriteLine("Lass wen retten");
 
             // Greifen subsystem:
+            /*
+            
             Greifarm greifarm = new Greifarm();
             Greifer greifer = new Greifer();
             ZugkraftAufnehmer zugSensor = new ZugkraftAufnehmer();
@@ -126,6 +130,9 @@ namespace Implementierung
 
             // test
             greifer.schliessen();
+
+
+            */
         }
     }
 }
