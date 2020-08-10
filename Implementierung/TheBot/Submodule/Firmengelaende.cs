@@ -40,9 +40,7 @@ public class Premises
     }
     
 /*
-
-22 x 20 
-
+------------------------------------------------------------------------------------------------------------------------------------------------
 H = Hinderniss                  Heißt hier piece of rock und ist ein nicht bewegliches Hinderniss
 B = Objekt was zum bergen       Heißt hier obstacle und kann aus dem weg geräumt werden wenn es leicht genug ist.
 W = Wasser                      
@@ -51,57 +49,92 @@ X = Äußere begrenzung
 S = Startpunkt
 F = Funkturm
 R = Radioaktives Dingen
-
+P = Person
+------------------------------------------------------------------------------------------------------------------------------------------------
+!!!Der 0-Punkt ist die Obere Linke Ecke!!!
+0 1 2 3 
+1
+2
+3
+------------------------------------------------------------------------------------------------------------------------------------------------
 */
-public void generateMap()
-{
-    Random random = new Random();
-    for (int i = 0; i < mapArr.GetLength(0); i++)
-        {
-            for (int j = 0; j < mapArr.GetLength(1); j++)
+    public void generateMap()
+    {
+        Random random = new Random();
+        for (int i = 0; i < mapArr.GetLength(0); i++)
             {
-                switch (mapArr[i,j])
+                for (int j = 0; j < mapArr.GetLength(1); j++)
                 {
-                    case "X":
-                            objArr[i,j] = new Wall();
-                        break;
-                    
-                    case "H":
-                            objArr[i,j] = new PieceOfRock(j,i);
-                        break;
+                    switch (mapArr[i,j])
+                    {
+                        // Wand
+                        case "X":
+                                this.objArr[i,j] = new Wall();
+                            break;
+                        // Unüberwindbares Hinderniss
+                        case "H":
+                                this.objArr[i,j] = new PieceOfRock(j,i);
+                            break;
+                        // Objekt was aus dem weg geräumt werden kan, wenn es gewissen Anforderungen entspricht
+                        case "B":
+                                // NextDouble = wert zwischen 0.0 und 1.0
+                                // randSize = Wert zwischen 2 und 12
+                                // randWeight = Wert zwischen 3 und 23
+                                // Runden auf 4 Nachkommastellen
 
-                    case "B":
-                            // NextDouble = wert zwischen 0.0 und 1.0
-                            // randSize = Wert zwischen 2 und 12
-                            // randWeight = wert zwischen 3 und 23
-                            double randSize = random.NextDouble() * 10 + 2;
-                            double randWeight = random.NextDouble() * 20 + 3;
-                            objArr[i,j] = new Obstacle(randWeight,randSize,j,i);
-                        break;
+                                double randSize = Math.Round(random.NextDouble() * 10 + 2, 4, MidpointRounding.ToEven);
+                                double randWeight = Math.Round(random.NextDouble() * 20 + 3, 4, MidpointRounding.ToEven);
+                                this.objArr[i,j] = new Obstacle(randWeight,randSize,j,i);
+                            break;
+                        // Wasser
+                        case "W":
+                                this.objArr[i,j] = new Water();
+                            break;
+                        // Starpunkt und Rescue Bot initialisierung
+                        case "S":
+                                this.objArr[i,j] = new StartingPoint(j,i);
+                                RescueBot rescueBot = new RescueBot(j,i);
+                            break;
+                        // Funkturm
+                        case "F":
+                                this.objArr[i,j] = new RadioTower(j,i);
+                            break;
+                        // Normaler Boden -> Freie fahrt!
+                        case "0":
+                                this.objArr[i,j] = new StrongGround(j,i);
+                            break;
+                        // Radioaktives Objekt. Kann unter bestimmten vorraussetzungen geborgen werden
+                        case "R":
+                                // NextDouble = wert zwischen 0.0 und 1.0
+                                // randSizeRad = Wert zwischen 2 und 12
+                                // randWeightRad = Wert zwischen 3 und 23
+                                // randRad = Wert zwischen 0 und 50
+                                // Runden auf 4 Nachkommastellen
 
-                    case "W":
-                        break;
-                    
-                    case "S":
-                        break;
-                    
-                    case "F":
-                        break;
-
-                    case "0":
-                        break;
-
-                    case "R":
-                        break;
-                    default:
-                            Console.WriteLine("Letter {0} not Found!", mapArr[i,j]);
-                        break;
-                }                
+                                double randSizeRad = Math.Round(random.NextDouble() * 10 + 2, 4, MidpointRounding.ToEven);
+                                double randWeightRad = Math.Round(random.NextDouble() * 20 + 3, 4, MidpointRounding.ToEven);
+                                double randRad = Math.Round(random.NextDouble() * 50 , 4, MidpointRounding.ToEven);
+                                this.objArr[i,j] = new RadioactiveObstacle(randWeightRad,randSizeRad,j,i,randRad);
+                            break;
+                        // Person 
+                        case "P":
+                                // Villeicht n Array mit verschiedenen schädigungen der Person aus dem eine Zufällige ausgewält wird
+                                this.objArr[i,j] = new Person(j,i,"Broken Arm");
+                            break;
+                        // default
+                        default:
+                                Console.WriteLine("Letter {0} not Found!", mapArr[i,j]);
+                            break;
+                    }                
+                }
             }
+    }
 
-            Console.WriteLine();
-        }
-}
+    public object returnUnderground(int x,int y)
+    {
+        object a = objArr[y,x];
+        return a;
+    }
 
 }
 
@@ -115,7 +148,7 @@ public class Obstacle
         this.weightKG = Weight;
         this.size = Size;
 
-        Console.WriteLine("Obstacle generated: X: {0} , Y: {1} , Weight: {2} , Size: {3}", positionX,positionY, weightKG, size);
+        Console.WriteLine("Obstacle generated: X: {0} , Y: {1} , Weight: {2} , Size: {3}", this.positionX,this.positionY, this.weightKG, this.size);
     }
     int positionX;
     int positionY;
@@ -126,12 +159,12 @@ public class Obstacle
 
 public class RadioactiveObstacle : Obstacle
 {
-    int weightKG;
-    int size;
+    double weightKG;
+    double size;
     int positionX;
     int positionY;
-    int radioactiveValue;
-    public RadioactiveObstacle(int Weight, int Size, int PositionX, int PositionY, int Radiation) : base(Weight, Size, PositionX,PositionY)
+    double radioactiveValue;
+    public RadioactiveObstacle(double Weight, double Size, int PositionX, int PositionY, double Radiation) : base(Weight, Size, PositionX,PositionY)
     {
         this.weightKG = Weight;
         this.size = Size;
@@ -144,7 +177,22 @@ public class RadioactiveObstacle : Obstacle
 
 public class Water
 {
+    public Water()
+    {
 
+    }
+}
+
+public class StartingPoint
+{
+    int positionX;
+    int positionY;
+    public StartingPoint(int posX, int posY)
+    {
+        this.positionX = posX;
+        this.positionY = posY;
+        Console.WriteLine("Starting Point at X:{0}, Y:{1}",this.positionX,this.positionY);
+    }
 }
 
 public class Wall
@@ -186,9 +234,11 @@ public class StrongGround
     // im Diagramm hinzufügen
     int positionX;
     int positionY;
-    public StrongGround()
+    public StrongGround(int posX, int posY)
     {
-        Console.WriteLine("Strong Ground Generated!");
+        this.positionX = posX;
+        this.positionY = posY;
+        Console.WriteLine("Strong Ground Generated at X:{0} and Y:{1}!",this.positionX,this.positionX);
     }
 }
 public class RadioTower
@@ -196,17 +246,22 @@ public class RadioTower
     int coordinateX;
     int coordinateY;
     string ID;
-    public RadioTower()
+    public RadioTower(int coordX, int coordY)
     {
-        Console.WriteLine("Radio Tower Generated!");
+        this.coordinateX = coordX;
+        this.coordinateY = coordY;
+        Console.WriteLine("Radio Tower Generated at X:{0} and Y:{1}!",this.coordinateX,this.coordinateY);
     }
     // TODO: Model um ne variable für die Koordinaten erweitern
-
 }
 public class RadioSignal
 {
     // TODO: Model um ne variable für die ID erweitern
     int ID;
+    public RadioSignal(int id)
+    {
+        this.ID = id;
+    }
 }
 
 public class Person
@@ -217,9 +272,8 @@ public class Person
 
     public Person(int positionX, int positionY, string kindOfHurt)
     {
-        Console.WriteLine("Person Generated!");
+        Console.WriteLine("Person Generated at X:{0} and Y:{1}!");
     }
-    // ToDo: Position über float / int? einheitlich für alle umsetzen
 
 }
 
