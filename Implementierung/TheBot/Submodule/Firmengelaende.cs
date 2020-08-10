@@ -88,7 +88,7 @@ P = Person
                             break;
                         // Wasser
                         case "W":
-                                this.objArr[i,j] = new Water();
+                                this.objArr[i,j] = new Water(j,i);
                             break;
                         // Starpunkt und Rescue Bot initialisierung
                         case "S":
@@ -177,9 +177,13 @@ public class RadioactiveObstacle : Obstacle
 
 public class Water
 {
-    public Water()
+    int positionX;
+    int positionY;
+    public Water(int positionX, int positionY)
     {
-
+        this.positionX = positionX;
+        this.positionY = positionY;
+        Console.WriteLine("Water generated! X: {0} , Y: {1}", this.positionX,this.positionY);
     }
 }
 
