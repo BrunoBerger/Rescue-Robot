@@ -96,6 +96,9 @@ public class Water
 
 public class Wall
 {
+    // im Diagramm hinzufügen
+    int positionX;
+    int positionY;
     public Wall()
     {
         Console.WriteLine("Wall Generated!");
