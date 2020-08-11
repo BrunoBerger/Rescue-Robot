@@ -50,7 +50,7 @@ https://github.com/BrunoBerger/rescueBot_UnityEnv
   </tr>
   <tr>
     <td>NFR2</td>
-    <td>Fortbewegung muss über zwei Propeller laufen</td>
+    <td>Fortbewegung muss über eine Turbine und ein Ruder laufen</td>
   </tr>
   <tr>
     <td rowspan="4">Gegenstände bergen</td>
