@@ -41,8 +41,11 @@ namespace Implementierung
     {   
         int positionX;
         int positionY;
+        int startPositionX;
+        int startPositionY;
         // Da bewegungen nur nach oben, unten, links und rechts möglich sind, sollte der Bot wissen was sich um ihn herum befindet und auf welchem untergrund er sich aktuell befindet.
         int maxTransportWeight = 200;
+
         object left;
         object right;
         object behind;
@@ -51,29 +54,50 @@ namespace Implementierung
         // Alle motoren innerhalöb des Bots Initialisieren
         Motor motorChainDriveLeft;
         Motor motorChainDriveRight;
-        Motor motorGrapplerRotation;
-        Motor motorGrapplerTilt;
-        Motor motorGrapplerJoint1;
-        Motor motorGrapplerJoint2;
-        Motor motorGripperRotation;
-        Motor motorGripper;
+        Motor turbine;
+        Motor rudder;
+
         
 
         public RescueBot(int posX, int posY)
         {
             this.positionX = posX;
             this.positionY = posY;
+            this.startPositionX = posX;
+            this.startPositionY = posY;
             Console.WriteLine("Rescue Bot generated at X:{0}, Y:{1}", this.positionX,this.positionY);
 
-            // Alle motoren innerhalöb des Bots Initialisieren
+            // Motoren innerhalöb des Bauteils Initialisieren
             this.motorChainDriveLeft = new Motor(100,"ChainDriveLeft",false,0,0);
             this.motorChainDriveRight = new Motor(100,"ChainDriveRight",false,0,0);
-            this.motorGrapplerRotation = new Motor(100,"GrapplerRotation",false,0,360);
-            this.motorGrapplerTilt = new Motor(100,"GrapplerTilt",false,0,180);
-            this.motorGrapplerJoint1 = new Motor(100,"GrapplerJoint1",false,-90,90);
-            this.motorGrapplerJoint2 = new Motor(100,"GrapplerJoint2",false,-90,90);
-            this.motorGripperRotation = new Motor(100,"GripperRotation",false,0,360);
-            this.motorGripper = new Motor(100,"GrapplerTilt",false,0,100);
+            this.turbine = new Motor(100,"Turbine",false,0,0);
+            this.rudder = new Motor(100,"Rudder",false,0,0);
+
+            // Initilise Grappler
+            Grappler grappler = new Grappler();
+            Gripper gripper = new Gripper();
+            
+            // Initialisierung der Peripherie und des Greifers innhalb des RescueBot Consturctors?
+            ForceTransducer forceTransducer = new ForceTransducer();
+            Support support = new Support();
+            BoxCover boxCover = new BoxCover();
+
+            // Kommunikation-Subsystem:
+            Camera camera = new Camera();
+            Microphon microphon = new Microphon();
+            Loudspeaker loudspeaker = new Loudspeaker();
+
+            // Navigation-Subsystem:
+            Navigation navigation = new Navigation();
+
+            //Signalverfolgung-Subsystem:
+            LeftAntenna leftAntenna = new LeftAntenna();
+            RightAntenna rightAntenna = new RightAntenna();
+            BacksideAntenna backsideAntenna = new BacksideAntenna();
+
+            //Objektbergung-Subsystem:
+            LIDARSensor lidarSensor = new LIDARSensor();
+            GeigerCounter geigerCounter = new GeigerCounter();
         }
 
         public void updateSurroundings(object Underground, object Left, object Right, object Behind, object InFront)
@@ -154,32 +178,6 @@ namespace Implementierung
         {
             Console.WriteLine("Lass wen retten");
 
-            // Greifer Subsystem
-            // Alles was auf dem Bot ist sollte die Position des Bots erben 
-            // Initialisierung der Peripherie und des Greifers innhalb des RescueBot Consturctors?
-            Grappler grappler = new Grappler();
-            Gripper gripper = new Gripper();
-            ForceTransducer forceTransducer = new ForceTransducer();
-            Support support = new Support();
-            BoxCover boxCover = new BoxCover();
-
-            // Kommunikation-Subsystem:
-            Camera camera = new Camera();
-            Microphon microphon = new Microphon();
-            Loudspeaker loudspeaker = new Loudspeaker();
-
-            // Navigation-Subsystem:
-            Navigation navigation = new Navigation();
-
-            //Signalverfolgung-Subsystem:
-            LeftAntenna leftAntenna = new LeftAntenna();
-            RightAntenna rightAntenna = new RightAntenna();
-            BacksideAntenna backsideAntenna = new BacksideAntenna();
-
-            //Objektbergung-Subsystem:
-            LIDARSensor lidarSensor = new LIDARSensor();
-            GeigerCounter geigerCounter = new GeigerCounter();
-            
             //Test
             Premises premises = new Premises(22, 20);
             premises.generateMap();
