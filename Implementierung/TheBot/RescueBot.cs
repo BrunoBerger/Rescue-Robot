@@ -42,6 +42,7 @@ namespace Implementierung
         int positionX;
         int positionY;
         // Da bewegungen nur nach oben, unten, links und rechts möglich sind, sollte der Bot wissen was sich um ihn herum befindet und auf welchem untergrund er sich aktuell befindet.
+        int maxTransportWeight = 200;
         object left;
         object right;
         object behind;
@@ -183,7 +184,9 @@ namespace Implementierung
             Premises premises = new Premises(22, 20);
             premises.generateMap();
             
-
+            object[,] map = premises.generateMap();
+            
+            RescueBot rescueBot = new RescueBot(premises.returnStartingPosition()[0],premises.returnStartingPosition()[1]);
             
         }
     }

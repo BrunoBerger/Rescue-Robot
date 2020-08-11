@@ -7,6 +7,8 @@ public class Premises
     
     int length;
     int width;
+    int startPositionX;
+    int startPositionY;
     string[,] mapArr = new string[22, 20] {
         {"X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X"},
         {"X", "F", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "F", "X"},
@@ -58,7 +60,7 @@ P = Person
 3
 ------------------------------------------------------------------------------------------------------------------------------------------------
 */
-    public void generateMap()
+    public object[,] generateMap()
     {
         Random random = new Random();
         for (int i = 0; i < mapArr.GetLength(0); i++)
@@ -88,12 +90,13 @@ P = Person
                             break;
                         // Wasser
                         case "W":
-                                this.objArr[i,j] = new Water(j,i);
+                                this.objArr[i,j] = new Water();
                             break;
-                        // Starpunkt und Rescue Bot initialisierung
+                        // Starpunkt und setzten der start Position
                         case "S":
                                 this.objArr[i,j] = new StartingPoint(j,i);
-                                RescueBot rescueBot = new RescueBot(j,i);
+                                this.startPositionX = j;
+                                this.startPositionY = i;
                             break;
                         // Funkturm
                         case "F":
@@ -128,12 +131,19 @@ P = Person
                     }                
                 }
             }
+        return objArr;
     }
 
     public object returnUnderground(int x,int y)
     {
-        object a = objArr[y,x];
+        object a = this.objArr[y,x];
         return a;
+    }
+
+    public int[] returnStartingPosition()
+    {
+        int[] startPos = new int[]{startPositionX,startPositionY};
+        return startPos;
     }
 
 }
@@ -177,13 +187,9 @@ public class RadioactiveObstacle : Obstacle
 
 public class Water
 {
-    int positionX;
-    int positionY;
-    public Water(int positionX, int positionY)
+    public Water()
     {
-        this.positionX = positionX;
-        this.positionY = positionY;
-        Console.WriteLine("Water generated! X: {0} , Y: {1}", this.positionX,this.positionY);
+
     }
 }
 
@@ -282,4 +288,3 @@ public class Person
 }
 
 }
-
