@@ -39,13 +39,14 @@ namespace Implementierung
 
     public class RescueBot
     {   
+
         int positionX;
         int positionY;
         int startPositionX;
         int startPositionY;
         // Da bewegungen nur nach oben, unten, links und rechts möglich sind, sollte der Bot wissen was sich um ihn herum befindet und auf welchem untergrund er sich aktuell befindet.
         int maxTransportWeight = 200;
-
+        
         object left;
         object right;
         object behind;
@@ -57,8 +58,9 @@ namespace Implementierung
         Motor turbine;
         Motor rudder;
 
+        Grappler grappler;
         
-
+        Support support;
         public RescueBot(int posX, int posY)
         {
             this.positionX = posX;
@@ -73,13 +75,12 @@ namespace Implementierung
             this.turbine = new Motor(100,"Turbine",false,0,0);
             this.rudder = new Motor(100,"Rudder",false,0,0);
 
-            // Initilise Grappler
-            Grappler grappler = new Grappler();
-            Gripper gripper = new Gripper();
+            // Initilise Grappler and support
+            this.grappler = new Grappler();
+            this.support = new Support();
             
             // Initialisierung der Peripherie und des Greifers innhalb des RescueBot Consturctors?
             ForceTransducer forceTransducer = new ForceTransducer();
-            Support support = new Support();
             BoxCover boxCover = new BoxCover();
 
             // Kommunikation-Subsystem:
@@ -159,19 +160,43 @@ namespace Implementierung
             
         }
         
-        public void measureObstacle()
+        public bool measureObstacle(Obstacle obstacle, double maxWeight, double maxSize)
         {
-            
+            // Gewicht des objektes abfragen
+            // Größe des objektes abfragen
+            // Entscheiden ob es zu schwer/zu groß ist oder nicht
+            // rückgabe wert true wenn das objekt bewegt werden kann || False wenn nicht
+            double size = obstacle.returnSize();
+            double weight = obstacle.returnWeight();
+
+            if (size <= maxSize && weight <= maxWeight)
+            {
+                return true;
+            }
+            else{
+                return false;
+            }            
         }
         
-        public void grip()
+        public void grip(Grappler grappler, Obstacle obstacle)
         {
-            
+            // support ausfahren
+            //grappler öffnen
+            // greifer zum objekt bewegen
+            // greifer schließen
+            grappler.openGripper();
+            support.extend();
+            grappler.move_to_target_position(obstacle.returnPosX(),obstacle.returnPosY());
+            grappler.closeGripper();
         }
         
         public void collectObstacle()
         {
-            
+            // box öffnen
+            // geschlossenen greifer über die box bewegen
+            // greifer öffnen
+            // arm wieder in die ausgangsposition
+            // box schließen
         }     
 
         static void Main(string[] args)
@@ -180,7 +205,7 @@ namespace Implementierung
 
             //Test
             Premises premises = new Premises(22, 20);
-            premises.generateMap();
+            
             
             object[,] map = premises.generateMap();
             

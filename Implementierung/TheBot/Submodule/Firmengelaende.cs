@@ -164,6 +164,23 @@ public class Obstacle
     int positionY;
 	double weightKG;
 	double size;
+
+    public double returnWeight()
+    {
+        return this.weightKG;
+    }
+    public double returnSize()
+    {
+        return this.size;
+    }
+    public int returnPosX()
+    {
+        return this.positionX;
+    }
+    public int returnPosY()
+    {
+        return this.positionY;
+    }
 }
 
 
