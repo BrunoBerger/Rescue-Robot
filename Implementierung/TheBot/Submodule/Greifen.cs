@@ -12,6 +12,7 @@ public class Grappler
 		this.motorGrapplerJoint1 = new Motor(100,"GrapplerJoint1",false,-90,90);
 		this.motorGrapplerJoint2 = new Motor(100,"GrapplerJoint2",false,-90,90);
         this.gripper = new Gripper();
+		this.forceTransducer = new ForceTransducer();
 		Console.WriteLine("Grappler started!");
 
     }
@@ -19,6 +20,7 @@ public class Grappler
 	int position;
 	int target_position;
 	Gripper gripper;
+	ForceTransducer forceTransducer;
 	Motor motorGrapplerRotation;
 	Motor motorGrapplerTilt;
 	Motor motorGrapplerJoint1;

@@ -58,9 +58,20 @@ namespace Implementierung
         Motor turbine;
         Motor rudder;
 
+        Antenna leftAntenna;
+        Antenna rightAntenna;
+        Antenna backsideAntenna;
+
         Grappler grappler;
-        
         Support support;
+
+        LIDARSensor lidar;
+        GeigerCounter geiger;
+        Camera camera;
+        Microphon microphon;
+        Loudspeaker loudspeaker;
+
+        BoxCover boxCover;
         public RescueBot(int posX, int posY)
         {
             this.positionX = posX;
@@ -79,26 +90,27 @@ namespace Implementierung
             this.grappler = new Grappler();
             this.support = new Support();
             
-            // Initialisierung der Peripherie und des Greifers innhalb des RescueBot Consturctors?
-            ForceTransducer forceTransducer = new ForceTransducer();
-            BoxCover boxCover = new BoxCover();
+            
+            this.boxCover = new BoxCover();
 
             // Kommunikation-Subsystem:
-            Camera camera = new Camera();
-            Microphon microphon = new Microphon();
-            Loudspeaker loudspeaker = new Loudspeaker();
+            this.camera = new Camera();
+            this.microphon = new Microphon();
+            this.loudspeaker = new Loudspeaker();
+
+            //Objektbergung-Subsystem:
+            this.lidar = new LIDARSensor();
+            this.geiger = new GeigerCounter();
 
             // Navigation-Subsystem:
             Navigation navigation = new Navigation();
 
             //Signalverfolgung-Subsystem:
-            LeftAntenna leftAntenna = new LeftAntenna();
-            RightAntenna rightAntenna = new RightAntenna();
-            BacksideAntenna backsideAntenna = new BacksideAntenna();
+            this.leftAntenna = new LeftAntenna();
+            this.rightAntenna = new RightAntenna();
+            this.backsideAntenna = new BacksideAntenna();
 
-            //Objektbergung-Subsystem:
-            LIDARSensor lidarSensor = new LIDARSensor();
-            GeigerCounter geigerCounter = new GeigerCounter();
+            
         }
 
         public void updateSurroundings(object Underground, object Left, object Right, object Behind, object InFront)
@@ -161,13 +173,18 @@ namespace Implementierung
         }
         
         public bool measureObstacle(Obstacle obstacle, double maxWeight, double maxSize)
-        {
-            // Gewicht des objektes abfragen
+        {   
+            // Per Lidar die größe des Objektes ermitteln
+            // wenn Größe passend, dann
+            // Greifer zum Objekt bewegen
+            // Gripper schließen
+            // Gewicht des objektes abfragen über force Tranducer
             // Größe des objektes abfragen
             // Entscheiden ob es zu schwer/zu groß ist oder nicht
             // rückgabe wert true wenn das objekt bewegt werden kann || False wenn nicht
-            double size = obstacle.returnSize();
-            double weight = obstacle.returnWeight();
+
+            double size = obstacle.returnSize();        // Wert muss vom LIDAR sensor kommen
+            double weight = obstacle.returnWeight();    // Wert muss vom Force transducer kommen
 
             if (size <= maxSize && weight <= maxWeight)
             {
@@ -181,7 +198,7 @@ namespace Implementierung
         public void grip(Grappler grappler, Obstacle obstacle)
         {
             // support ausfahren
-            //grappler öffnen
+            // grappler öffnen
             // greifer zum objekt bewegen
             // greifer schließen
             grappler.openGripper();
