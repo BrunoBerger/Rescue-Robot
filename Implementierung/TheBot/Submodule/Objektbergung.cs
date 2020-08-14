@@ -25,21 +25,23 @@ public class LIDARSensor
             return false;
         }
     }
-    public Ground[] detectSourroundings(int botPosX, int botPosY, object[,] map)
+    public Ground[] detectSourroundings(int botPosX, int botPosY, Premises premises)
     {
         // 0 = current, 1 = left, 2 = right, 3 = behind, 4 = infront
         // Cast the objects to Ground Objects
         Ground[] sourroundings = new Ground[5];
-        sourroundings[0] = (Ground)map[botPosY,botPosX];
-        sourroundings[1] = (Ground)map[botPosY,botPosX - 1];
-        sourroundings[2] = (Ground)map[botPosY,botPosX + 1];
-        sourroundings[3] = (Ground)map[botPosY + 1,botPosX];
-        sourroundings[4] = (Ground)map[botPosY - 1,botPosX];
+        
+        sourroundings[0] = (Ground)premises.returnUnderground(botPosX, botPosY);
+        sourroundings[1] = (Ground)premises.returnUnderground(botPosX - 1, botPosY);
+        sourroundings[2] = (Ground)premises.returnUnderground(botPosX + 1, botPosY);
+        sourroundings[3] = (Ground)premises.returnUnderground(botPosX, botPosY + 1);
+        sourroundings[4] = (Ground)premises.returnUnderground(botPosX, botPosY - 1);
         
         return sourroundings;
     }
     public int sendSignal()
     {
+        
         int signal = 1337;
         return signal;
     }

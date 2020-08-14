@@ -145,24 +145,36 @@ P = Person
         int[] startPos = new int[]{startPositionX,startPositionY};
         return startPos;
     }
+    public void replaceWithStrongGround(int posX, int posY)
+    {
+        this.objArr[posY,posX] = new StrongGround(posX,posY);
+    }
 
 }
-
-
-public class Obstacle
+public abstract class Ground
 {
-    public Obstacle(double Weight, double Size, int PositionX, int PositionY)
+    public int positionX;
+    public int positionY;
+    bool traversable;
+
+    public Ground(int posX, int posY)
+    {
+        this.positionX = posX;
+        this.positionY = posY;
+    }
+    public abstract bool returnTraversable();
+}
+
+public class Obstacle : Ground
+{
+    public Obstacle(double Weight, double Size, int posX, int posY) : base(posX,posY)
     {
         this.traversable = false;
-        this.positionX = PositionX;
-        this.positionY = PositionY;
         this.weightKG = Weight;
         this.size = Size;
 
         Console.WriteLine("Obstacle generated: X: {0} , Y: {1} , Weight: {2} , Size: {3}", this.positionX,this.positionY, this.weightKG, this.size);
     }
-    int positionX;
-    int positionY;
 	double weightKG;
 	double size;
     bool traversable;
@@ -183,6 +195,10 @@ public class Obstacle
     {
         return this.positionY;
     }
+    public override bool returnTraversable()
+    {
+        return this.traversable;
+    }
 }
 
 
@@ -190,17 +206,14 @@ public class RadioactiveObstacle : Obstacle
 {
     double weightKG;
     double size;
-    int positionX;
-    int positionY;
+
     double radioactiveValue;
     bool traversable;
-    public RadioactiveObstacle(double Weight, double Size, int PositionX, int PositionY, double Radiation) : base(Weight, Size, PositionX,PositionY)
+    public RadioactiveObstacle(double Weight, double Size, int posX, int posY, double Radiation) : base(Weight, Size, posX,posY)
     {
         this.traversable = false;
         this.weightKG = Weight;
         this.size = Size;
-        this.positionX = PositionX;
-        this.positionY = PositionY;
         this.radioactiveValue = Radiation;   
         Console.WriteLine("Radioactive Obstacle generated! X: {0} , Y: {1} , KG: {2} , Size: {3} ,Rad: {4}", this.positionX,this.positionY,this.weightKG,this.size,this.radioactiveValue);
     }
@@ -209,22 +222,7 @@ public class RadioactiveObstacle : Obstacle
     {
         return this.radioactiveValue;
     }
-}
-
-
-
-public class Ground
-{
-    public int positionX;
-    public int positionY;
-    bool traversable;
-
-    public Ground(int posX, int posY)
-    {
-        this.positionX = posX;
-        this.positionY = posY;
-    }
-    public bool returnTraversable()
+    public override bool returnTraversable()
     {
         return this.traversable;
     }
@@ -237,6 +235,11 @@ public class Water : Ground
     {
         this.traversable = true;
     }
+
+    public override bool returnTraversable()
+    {
+        return this.traversable;
+    }
 }
 
 public class StartingPoint : Ground
@@ -246,6 +249,10 @@ public class StartingPoint : Ground
     {
         this.traversable = true;
         Console.WriteLine("Starting Point at X:{0}, Y:{1}",this.positionX,this.positionY);
+    }
+    public override bool returnTraversable()
+    {
+        return this.traversable;
     }
 }
 
@@ -259,6 +266,11 @@ public class Wall : Ground
         Console.WriteLine("Wall Generated!");
     }
 
+    public override bool returnTraversable()
+    {
+        return this.traversable;
+    }
+
 }
 public class Fog : Ground
 {
@@ -268,6 +280,10 @@ public class Fog : Ground
     {
         this.traversable = true;
         Console.WriteLine("Fog Generated!");
+    }
+    public override bool returnTraversable()
+    {
+        return this.traversable;
     }
 }
 public class PieceOfRock : Ground
@@ -280,6 +296,10 @@ public class PieceOfRock : Ground
         this.traversable = false;
         Console.WriteLine("Piece of Rock Generated at X:{0} and Y:{1}!", this.positionX, this.positionY);
     }
+    public override bool returnTraversable()
+    {
+        return this.traversable;
+    }
 }
 public class StrongGround : Ground
 {
@@ -289,6 +309,10 @@ public class StrongGround : Ground
     {
         this.traversable = true;
         Console.WriteLine("Strong Ground Generated at X:{0} and Y:{1}!",this.positionX,this.positionY);
+    }
+    public override bool returnTraversable()
+    {
+        return this.traversable;
     }
 }
 public class RadioTower : Ground
@@ -300,11 +324,14 @@ public class RadioTower : Ground
         this.traversable = false;
         Console.WriteLine("Radio Tower Generated at X:{0} and Y:{1}!",this.positionX,this.positionY);
     }
-    // TODO: Model um ne variable für die Koordinaten erweitern
+    public override bool returnTraversable()
+    {
+        return this.traversable;
+    }
+    
 }
 public class RadioSignal
 {
-    // TODO: Model um ne variable für die ID erweitern
     int ID;
     public RadioSignal(int id)
     {
@@ -322,7 +349,9 @@ public class Person : Ground
         this.traversable = false;
         Console.WriteLine("Person Generated at X:{0} and Y:{1}!",this.positionX,this.positionY);
     }
-
+    public override bool returnTraversable()
+    {
+        return this.traversable;
+    }
 }
-
 }

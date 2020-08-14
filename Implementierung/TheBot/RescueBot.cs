@@ -74,11 +74,13 @@ namespace Implementierung
 
         Navigation navigation;
         BoxCover boxCover;
-        object[,] map = new object[22, 20];
-        public RescueBot(int posX, int posY, object[,] Map)
+        Premises premises;
+        
+        // Der bot sollte noch eine Eigene Karte haben die er zur laufzeit erstellt um den weg zurück zu finden.
+        public RescueBot(int posX, int posY, Premises premises)
         {
             
-            this.map = Map;
+            this.premises = premises;
 
             this.positionX = posX;
             this.positionY = posY;
@@ -124,16 +126,21 @@ namespace Implementierung
         {
             // muss mit Lidar geupdated werden
             Ground[] sourroundings = new Ground[5];
-            sourroundings = lidar.detectSourroundings(this.positionX,this.positionY,map);
+            sourroundings = lidar.detectSourroundings(this.positionX,this.positionY,premises);
             this.current = sourroundings[0];
             this.left = sourroundings[1];
             this.right = sourroundings[2];
             this.behind = sourroundings[3];
             this.inFront = sourroundings[4];
+
+
+            // Debug Print 
+            // was ist um mich herum....
             foreach (Ground X in sourroundings)
             {
-                Console.WriteLine("{0}, trav:{1}",X,X.returnTraversable());
+                Console.WriteLine("{0}, trav:{1}, Type:{2}",X,X.returnTraversable(),X.GetType());
             }
+
         }
 
         public void signalRequest()
@@ -149,14 +156,20 @@ namespace Implementierung
             
         }
 
-        public void driveForward(object[,] map)
+        // Fahren auslagern in eigene Methode -> Effektiver
+        public void driveForward()
         // da sich der bot nicht dreht, ist vorne immer norden auf der karte
         {
-            Console.WriteLine("posy{0} trav:{1} test{2}",this.positionY,inFront.returnTraversable(), false);
-            if (this.positionY > 0 && inFront.returnTraversable())
+            if (inFront.returnTraversable())
             {
-                positionY --;
-                Console.WriteLine("kann mich bewgen brudi!");
+                if(inFront.GetType() != typeof(Water))
+                {
+                    positionY --;
+                }
+                else
+                {
+                    Console.WriteLine("There is Water!");
+                }
             }
             else
             {
@@ -166,17 +179,59 @@ namespace Implementierung
         public void driveBackward()
         // da sich der bot nicht dreht, ist hinten immer süden auf der karte
         {
-            
+            if (behind.returnTraversable())
+            { 
+                if(behind.GetType() != typeof(Water))
+                {
+                positionY ++;
+                }                
+                else
+                {
+                    Console.WriteLine("There is Water!");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Bot cannot go backward!");
+            }
         }
         public void driveLeft()
         // da sich der bot nicht dreht, ist links immer westen auf der karte
         {
-            
+            if (left.returnTraversable())
+            {
+                 if(left.GetType() != typeof(Water))
+                {
+                positionX --;
+                }                
+                else
+                {
+                    Console.WriteLine("There is Water!");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Bot cannot go left!");
+            }
         }
         public void driveRight()
         // da sich der bot nicht dreht, ist rechts immer osten auf der karte
         {
-            
+            if (right.returnTraversable())
+            {
+                if(right.GetType() != typeof(Water))
+                {
+                positionX ++;
+                }
+                else
+                {
+                    Console.WriteLine("There is Water!");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Bot cannot go right!");
+            }
         }
         public void swimForward()
         // da sich der bot nicht dreht, ist vorne immer norden auf der karte
@@ -269,13 +324,36 @@ namespace Implementierung
             
             object[,] map = premises.generateMap();
             
-            RescueBot rescueBot = new RescueBot(premises.returnStartingPosition()[0],premises.returnStartingPosition()[1], map);
+            RescueBot rescueBot = new RescueBot(premises.returnStartingPosition()[0],premises.returnStartingPosition()[1], premises);
             // Start navigation oder so
-            rescueBot.updateSurroundings();
-
-            // Warum ist traversable immer das was in der Ground klasse angegeben wird? 
-            rescueBot.driveForward(map);
             
+            // Bot ground movement Test // --> Works!!!
+            /*
+            rescueBot.updateSurroundings();
+            Console.WriteLine("PosY{0}, PosX{1}",rescueBot.positionY,rescueBot.positionX);
+            rescueBot.driveForward();
+            rescueBot.updateSurroundings();
+            Console.WriteLine("PosY{0}, PosX{1}",rescueBot.positionY,rescueBot.positionX);
+            rescueBot.driveRight();
+            rescueBot.updateSurroundings();
+            Console.WriteLine("PosY{0}, PosX{1}",rescueBot.positionY,rescueBot.positionX);
+            rescueBot.driveForward();
+            rescueBot.updateSurroundings();
+            Console.WriteLine("PosY{0}, PosX{1}",rescueBot.positionY,rescueBot.positionX);
+            rescueBot.driveForward();
+            rescueBot.updateSurroundings();
+            Console.WriteLine("PosY{0}, PosX{1}",rescueBot.positionY,rescueBot.positionX);
+            rescueBot.driveForward();
+            rescueBot.updateSurroundings();
+            Console.WriteLine("PosY{0}, PosX{1}",rescueBot.positionY,rescueBot.positionX);
+            rescueBot.driveForward();
+            */
+
+            // TODO: 
+            // Navigations algorithmus                                  
+            // Automatisches aufsammeln von passenden gegenständen                  
+            // wenn sie sich links, rechts, vor oder hinter dem fahrzeug befinden    
+            // entfernen der gegenstände auf der Karte                              DONE
         }
     }
 }
