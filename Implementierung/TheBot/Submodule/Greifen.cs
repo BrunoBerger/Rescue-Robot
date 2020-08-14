@@ -37,11 +37,18 @@ public class Grappler
 	}
 	public void move_towards_box_pos()
 	{
-		
+		Console.WriteLine("Moving Grappler to Box Position!");
+	}
+	public double measureWeight(RadioactiveObstacle obstacle)
+	{
+		return forceTransducer.measureWeight(obstacle);
 	}
 	public void rotate()
 	{
 
+	}
+	public void move_to_park_position(){
+		Console.WriteLine("Grappler is in Parking Position");
 	}
 	public void move_to_target_position(int targetPosX, int targetPosY)
 	{

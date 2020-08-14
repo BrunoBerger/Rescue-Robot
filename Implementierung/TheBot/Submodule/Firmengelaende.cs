@@ -12,7 +12,7 @@ public class Premises
     string[,] mapArr = new string[22, 20] {
         {"X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X"},
         {"X", "F", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "F", "X"},
-        {"X", "0", "0", "0", "R", "0", "0", "0", "0", "R", "0", "0", "0", "0", "0", "0", "0", "0", "0", "X"},
+        {"X", "0", "B", "0", "R", "0", "0", "0", "0", "R", "0", "0", "0", "0", "0", "0", "0", "0", "0", "X"},
         {"X", "0", "0", "0", "0", "0", "0", "0", "B", "0", "0", "0", "0", "B", "0", "0", "0", "0", "0", "X"},
         {"X", "0", "R", "0", "0", "0", "0", "R", "0", "R", "R", "0", "0", "0", "R", "H", "H", "H", "0", "X"},
         {"X", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "H", "H", "H", "0", "X"},
@@ -71,7 +71,7 @@ P = Person
                     {
                         // Wand
                         case "X":
-                                this.objArr[i,j] = new Wall();
+                                this.objArr[i,j] = new Wall(j,i);
                             break;
                         // Unüberwindbares Hinderniss
                         case "H":
@@ -90,7 +90,7 @@ P = Person
                             break;
                         // Wasser
                         case "W":
-                                this.objArr[i,j] = new Water();
+                                this.objArr[i,j] = new Water(j,i);
                             break;
                         // Starpunkt und setzten der start Position
                         case "S":
@@ -153,6 +153,7 @@ public class Obstacle
 {
     public Obstacle(double Weight, double Size, int PositionX, int PositionY)
     {
+        this.traversable = false;
         this.positionX = PositionX;
         this.positionY = PositionY;
         this.weightKG = Weight;
@@ -164,6 +165,7 @@ public class Obstacle
     int positionY;
 	double weightKG;
 	double size;
+    bool traversable;
 
     public double returnWeight()
     {
@@ -191,8 +193,10 @@ public class RadioactiveObstacle : Obstacle
     int positionX;
     int positionY;
     double radioactiveValue;
+    bool traversable;
     public RadioactiveObstacle(double Weight, double Size, int PositionX, int PositionY, double Radiation) : base(Weight, Size, PositionX,PositionY)
     {
+        this.traversable = false;
         this.weightKG = Weight;
         this.size = Size;
         this.positionX = PositionX;
@@ -200,13 +204,27 @@ public class RadioactiveObstacle : Obstacle
         this.radioactiveValue = Radiation;   
         Console.WriteLine("Radioactive Obstacle generated! X: {0} , Y: {1} , KG: {2} , Size: {3} ,Rad: {4}", this.positionX,this.positionY,this.weightKG,this.size,this.radioactiveValue);
     }
+
+    public double returnRadiation()
+    {
+        return this.radioactiveValue;
+    }
 }
+
+
+// Klasse untergrund erstellen und alle untergründe von ihr erben lassen.
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Super IMPORTANT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 public class Water
 {
-    public Water()
+    int positionX;
+    int positionY;
+    bool traversable;
+    public Water(int posX, int posY)
     {
-
+        this.positionX = posX;
+        this.positionY = posY;
+        this.traversable = true;
     }
 }
 
@@ -227,8 +245,12 @@ public class Wall
     // im Diagramm hinzufügen
     int positionX;
     int positionY;
-    public Wall()
+    bool traversable;
+    public Wall(int posX, int posY)
     {
+        this.positionX = posX;
+        this.positionY = posY;
+        this.traversable = false;
         Console.WriteLine("Wall Generated!");
     }
 
@@ -238,8 +260,12 @@ public class Fog
     // im Diagramm hinzufügen
     int positionX;
     int positionY;
-    public Fog()
+    bool traversable;
+    public Fog(int posX, int posY)
     {
+        this.positionY = posY;
+        this.positionX = posX;
+        this.traversable = true;
         Console.WriteLine("Fog Generated!");
     }
 }
@@ -249,10 +275,12 @@ public class PieceOfRock
     // im Diagramm hinzufügen
     int positionX;
     int positionY;
+    bool traversable;
     public PieceOfRock(int posX, int posY)
     {
         this.positionX = posX;
         this.positionY = posY;
+        this.traversable = false;
         Console.WriteLine("Piece of Rock Generated at X:{0} and Y:{1}!", posX, posY);
     }
 }
@@ -261,10 +289,12 @@ public class StrongGround
     // im Diagramm hinzufügen
     int positionX;
     int positionY;
+    bool traversable;
     public StrongGround(int posX, int posY)
     {
         this.positionX = posX;
         this.positionY = posY;
+        this.traversable = true;
         Console.WriteLine("Strong Ground Generated at X:{0} and Y:{1}!",this.positionX,this.positionX);
     }
 }
@@ -272,9 +302,11 @@ public class RadioTower
 {
     int coordinateX;
     int coordinateY;
+    bool traversable;
     string ID;
     public RadioTower(int coordX, int coordY)
     {
+        this.traversable = false;
         this.coordinateX = coordX;
         this.coordinateY = coordY;
         Console.WriteLine("Radio Tower Generated at X:{0} and Y:{1}!",this.coordinateX,this.coordinateY);
@@ -296,9 +328,13 @@ public class Person
     int positionX;
     int positionY;
     string kindOfHurt;
-
-    public Person(int positionX, int positionY, string kindOfHurt)
+    bool traversable;
+    public Person(int posX, int posY, string kindHurt)
     {
+        this.positionX = posX;
+        this.positionY = posY;
+        this.kindOfHurt = kindHurt;
+        this.traversable = false;
         Console.WriteLine("Person Generated at X:{0} and Y:{1}!");
     }
 
