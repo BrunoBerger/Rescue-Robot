@@ -212,104 +212,93 @@ public class RadioactiveObstacle : Obstacle
 }
 
 
-// Klasse untergrund erstellen und alle untergründe von ihr erben lassen.
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Super IMPORTANT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-public class Water
+public class Ground
 {
-    int positionX;
-    int positionY;
+    public int positionX;
+    public int positionY;
     bool traversable;
-    public Water(int posX, int posY)
+
+    public Ground(int posX, int posY)
     {
         this.positionX = posX;
         this.positionY = posY;
+    }
+    public bool returnTraversable()
+    {
+        return this.traversable;
+    }
+}
+
+public class Water : Ground
+{
+    bool traversable;
+    public Water(int posX, int posY) : base(posX,posY)
+    {
         this.traversable = true;
     }
 }
 
-public class StartingPoint
+public class StartingPoint : Ground
 {
-    int positionX;
-    int positionY;
-    public StartingPoint(int posX, int posY)
+    bool traversable;
+    public StartingPoint(int posX, int posY) : base(posX,posY)
     {
-        this.positionX = posX;
-        this.positionY = posY;
+        this.traversable = true;
         Console.WriteLine("Starting Point at X:{0}, Y:{1}",this.positionX,this.positionY);
     }
 }
 
-public class Wall
+public class Wall : Ground
 {
     // im Diagramm hinzufügen
-    int positionX;
-    int positionY;
     bool traversable;
-    public Wall(int posX, int posY)
+    public Wall(int posX, int posY) : base(posX,posY)
     {
-        this.positionX = posX;
-        this.positionY = posY;
         this.traversable = false;
         Console.WriteLine("Wall Generated!");
     }
 
 }
-public class Fog
+public class Fog : Ground
 {
     // im Diagramm hinzufügen
-    int positionX;
-    int positionY;
     bool traversable;
-    public Fog(int posX, int posY)
+    public Fog(int posX, int posY) : base(posX,posY)
     {
-        this.positionY = posY;
-        this.positionX = posX;
         this.traversable = true;
         Console.WriteLine("Fog Generated!");
     }
 }
-public class PieceOfRock
+public class PieceOfRock : Ground
 // Nicht bewegbares Hinderniss!
 {
     // im Diagramm hinzufügen
-    int positionX;
-    int positionY;
     bool traversable;
-    public PieceOfRock(int posX, int posY)
+    public PieceOfRock(int posX, int posY) : base(posX,posY)
     {
-        this.positionX = posX;
-        this.positionY = posY;
         this.traversable = false;
-        Console.WriteLine("Piece of Rock Generated at X:{0} and Y:{1}!", posX, posY);
+        Console.WriteLine("Piece of Rock Generated at X:{0} and Y:{1}!", this.positionX, this.positionY);
     }
 }
-public class StrongGround
+public class StrongGround : Ground
 {
     // im Diagramm hinzufügen
-    int positionX;
-    int positionY;
     bool traversable;
-    public StrongGround(int posX, int posY)
+    public StrongGround(int posX, int posY) : base(posX,posY)
     {
-        this.positionX = posX;
-        this.positionY = posY;
         this.traversable = true;
-        Console.WriteLine("Strong Ground Generated at X:{0} and Y:{1}!",this.positionX,this.positionX);
+        Console.WriteLine("Strong Ground Generated at X:{0} and Y:{1}!",this.positionX,this.positionY);
     }
 }
-public class RadioTower
+public class RadioTower : Ground
 {
-    int coordinateX;
-    int coordinateY;
     bool traversable;
     string ID;
-    public RadioTower(int coordX, int coordY)
+    public RadioTower(int posX, int posY) : base(posX,posY)
     {
         this.traversable = false;
-        this.coordinateX = coordX;
-        this.coordinateY = coordY;
-        Console.WriteLine("Radio Tower Generated at X:{0} and Y:{1}!",this.coordinateX,this.coordinateY);
+        Console.WriteLine("Radio Tower Generated at X:{0} and Y:{1}!",this.positionX,this.positionY);
     }
     // TODO: Model um ne variable für die Koordinaten erweitern
 }
@@ -323,19 +312,15 @@ public class RadioSignal
     }
 }
 
-public class Person
+public class Person : Ground
 {
-    int positionX;
-    int positionY;
     string kindOfHurt;
     bool traversable;
-    public Person(int posX, int posY, string kindHurt)
+    public Person(int posX, int posY, string kindHurt) : base(posX,posY)
     {
-        this.positionX = posX;
-        this.positionY = posY;
         this.kindOfHurt = kindHurt;
         this.traversable = false;
-        Console.WriteLine("Person Generated at X:{0} and Y:{1}!");
+        Console.WriteLine("Person Generated at X:{0} and Y:{1}!",this.positionX,this.positionY);
     }
 
 }

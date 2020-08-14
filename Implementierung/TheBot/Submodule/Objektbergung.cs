@@ -25,15 +25,16 @@ public class LIDARSensor
             return false;
         }
     }
-    public object[] detectSourroundings(int botPosX, int botPosY, object[,] map)
+    public Ground[] detectSourroundings(int botPosX, int botPosY, object[,] map)
     {
         // 0 = current, 1 = left, 2 = right, 3 = behind, 4 = infront
-        object[] sourroundings = new object[5];
-        sourroundings[0] = map[botPosY,botPosX];
-        sourroundings[1] = map[botPosY,botPosX - 1];
-        sourroundings[2] = map[botPosY,botPosX + 1];
-        sourroundings[3] = map[botPosY + 1,botPosX];
-        sourroundings[4] = map[botPosY - 1,botPosX];
+        // Cast the objects to Ground Objects
+        Ground[] sourroundings = new Ground[5];
+        sourroundings[0] = (Ground)map[botPosY,botPosX];
+        sourroundings[1] = (Ground)map[botPosY,botPosX - 1];
+        sourroundings[2] = (Ground)map[botPosY,botPosX + 1];
+        sourroundings[3] = (Ground)map[botPosY + 1,botPosX];
+        sourroundings[4] = (Ground)map[botPosY - 1,botPosX];
         
         return sourroundings;
     }

@@ -48,11 +48,11 @@ namespace Implementierung
         double currentLoad = 0;
         // Bot sollte wissen was sich um ihn herum befindet und auf welchem untergrund er sich aktuell befindet.
         
-        object left;
-        object right;
-        object behind;
-        object inFront;
-        object current;
+        Ground left;
+        Ground right;
+        Ground behind;
+        Ground inFront;
+        Ground current;
         
         Motor motorChainDriveLeft;
         Motor motorChainDriveRight;
@@ -123,13 +123,17 @@ namespace Implementierung
         public void updateSurroundings()
         {
             // muss mit Lidar geupdated werden
-            object[] sourroundings = new object[5];
+            Ground[] sourroundings = new Ground[5];
             sourroundings = lidar.detectSourroundings(this.positionX,this.positionY,map);
             this.current = sourroundings[0];
             this.left = sourroundings[1];
             this.right = sourroundings[2];
             this.behind = sourroundings[3];
             this.inFront = sourroundings[4];
+            foreach (Ground X in sourroundings)
+            {
+                Console.WriteLine("{0}, trav:{1}",X,X.returnTraversable());
+            }
         }
 
         public void signalRequest()
@@ -144,28 +148,20 @@ namespace Implementierung
         {
             
         }
-        public bool isTraversable(/*object X*/)
-        {
-            if (inFront.traversable != null)
-            {
 
-                return true;
-            }
-            return false;
-        }
         public void driveForward(object[,] map)
         // da sich der bot nicht dreht, ist vorne immer norden auf der karte
         {
-            /*if (positionY > 0 && inFront.)
+            Console.WriteLine("posy{0} trav:{1} test{2}",this.positionY,inFront.returnTraversable(), false);
+            if (this.positionY > 0 && inFront.returnTraversable())
             {
-
-
                 positionY --;
+                Console.WriteLine("kann mich bewgen brudi!");
             }
             else
             {
                 Console.WriteLine("Bot cannot go forward!");
-            }*/
+            }
         }
         public void driveBackward()
         // da sich der bot nicht dreht, ist hinten immer süden auf der karte
@@ -276,7 +272,10 @@ namespace Implementierung
             RescueBot rescueBot = new RescueBot(premises.returnStartingPosition()[0],premises.returnStartingPosition()[1], map);
             // Start navigation oder so
             rescueBot.updateSurroundings();
-            rescueBot.isTraversable();
+
+            // Warum ist traversable immer das was in der Ground klasse angegeben wird? 
+            rescueBot.driveForward(map);
+            
         }
     }
 }
