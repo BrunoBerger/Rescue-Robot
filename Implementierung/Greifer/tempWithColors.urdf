@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com)
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="urdfExports">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="7.2718E-07 -0.18 0.18323"
+        rpy="0 0 0" />
+      <mass
+        value="325.51" />
+      <inertia
+        ixx="114.12"
+        ixy="-0.0029457"
+        ixz="-1.016E-05"
+        iyy="44.651"
+        iyz="11.453"
+        izz="140.83" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdfExports/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="169 0 253 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdfExports/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="drehplatte">
+    <inertial>
+      <origin
+        xyz="0 0.013893 0.00060356"
+        rpy="0 0 0" />
+      <mass
+        value="0.42188" />
+      <inertia
+        ixx="0.0005517"
+        ixy="1.3129E-20"
+        ixz="1.3553E-19"
+        iyy="0.0010552"
+        iyz="-6.5402E-06"
+        izz="0.00060462" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdfExports/meshes/drehplatte.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="84 0 253 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdfExports/meshes/drehplatte.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Dreplatte"
+    type="continuous">
+    <origin
+      xyz="0 -0.77238 0.59117"
+      rpy="1.5708 0 -0.56324" />
+    <parent
+      link="base_link" />
+    <child
+      link="drehplatte" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="oberarm">
+    <inertial>
+      <origin
+        xyz="-1.1102E-16 0.013603 -0.1102"
+        rpy="0 0 0" />
+      <mass
+        value="0.27688" />
+      <inertia
+        ixx="0.0028368"
+        ixy="5.421E-19"
+        ixz="6.8847E-18"
+        iyy="0.0029288"
+        iyz="4.2998E-05"
+        izz="0.00014291" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdfExports/meshes/oberarm.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 76 253 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdfExports/meshes/oberarm.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Oberarm"
+    type="continuous">
+    <origin
+      xyz="0 0.06 0.015"
+      rpy="-2.4448 0 3.1416" />
+    <parent
+      link="drehplatte" />
+    <child
+      link="oberarm" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="unterarm">
+    <inertial>
+      <origin
+        xyz="1.9984E-15 0 0.21035"
+        rpy="0 0 0" />
+      <mass
+        value="0.13865" />
+      <inertia
+        ixx="0.0022619"
+        ixy="1.3553E-19"
+        ixz="-8.5663E-18"
+        iyy="0.002262"
+        iyz="1.4743E-18"
+        izz="7.3145E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdfExports/meshes/unterarm.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 143 253 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdfExports/meshes/unterarm.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Unterarm"
+    type="continuous">
+    <origin
+      xyz="0 0.015 -0.27"
+      rpy="-2.0712 0 3.1416" />
+    <parent
+      link="oberarm" />
+    <child
+      link="unterarm" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="hand">
+    <inertial>
+      <origin
+        xyz="3.8858E-15 -2.2204E-16 0.032382"
+        rpy="0 0 0" />
+      <mass
+        value="0.0067909" />
+      <inertia
+        ixx="3.69E-06"
+        ixy="-1.8529E-22"
+        ixz="1.9078E-20"
+        iyy="3.6887E-06"
+        iyz="3.5141E-20"
+        izz="1.4958E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdfExports/meshes/hand.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 228 253 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://urdfExports/meshes/hand.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Hand"
+    type="continuous">
+    <origin
+      xyz="0 0 0.43"
+      rpy="-0.33213 0 0" />
+    <parent
+      link="unterarm" />
+    <child
+      link="hand" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+</robot>

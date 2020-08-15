@@ -1,2 +1,8 @@
+Models we used:
 Ketten-Motor:
 https://grabcad.com/library/electric-motor-256t-frame
+
+
+Inverse kinematics with these:
+http://wiki.ros.org/sw_urdf_exporter
+https://github.com/Phylliade/ikpy/wiki
