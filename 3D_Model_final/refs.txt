@@ -1,8 +1,10 @@
 Models we used:
 Ketten-Motor:
 https://grabcad.com/library/electric-motor-256t-frame
+Propeller:
+https://grabcad.com/library/4-blade-boat-propeller-1/details?folder_id=7763990
 
 
-Inverse kinematics with these:
+Inverse kinematics done with these:
 http://wiki.ros.org/sw_urdf_exporter
 https://github.com/Phylliade/ikpy/wiki
