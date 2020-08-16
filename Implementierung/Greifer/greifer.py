@@ -9,10 +9,10 @@ import matplotlib.pyplot as plt
 
 print(os.getcwd())
 
-urdfPath2= "RescueBot_Baugruppe.SLDASM/urdf/RescueBot_Baugruppe.SLDASM.urdf"
-my_chain = ikpy.chain.Chain.from_urdf_file(urdfPath1)
+urdfPath= "RescueBot_Baugruppe.SLDASM/urdf/RescueBot_Baugruppe.SLDASM.urdf"
+my_chain = ikpy.chain.Chain.from_urdf_file(urdfPath)
 
-target_position = [ 15, 15, 15]
+target_position = [ 15, -5, 0]
 
 print("The angles of each joints are : ", my_chain.inverse_kinematics(target_position))
 
@@ -25,6 +25,6 @@ print("The angles of each joints are : ", my_chain.inverse_kinematics(target_pos
 fig, ax = plot_utils.init_3d_figure()
 # my_chain.plot(my_chain.inverse_kinematics(target_position), ax, target=target_vector)
 my_chain.plot(my_chain.inverse_kinematics(target_position), ax, target=None)
-plt.xlim(-7, 7)
-plt.ylim(-7, 7)
+plt.xlim(-2, 2)
+plt.ylim(-2, 2)
 plt.show()
