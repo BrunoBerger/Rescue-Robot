@@ -354,6 +354,9 @@ namespace Implementierung
             // Automatisches aufsammeln von passenden gegenständen                  
             // wenn sie sich links, rechts, vor oder hinter dem fahrzeug befinden    
             // entfernen der gegenstände auf der Karte                              DONE
+            // Bot auf der Karte anzeigen
+            // Bot auf der Karte bewegen
+            
         }
     }
 }
