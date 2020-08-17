@@ -66,6 +66,8 @@ namespace Implementierung
         Grappler grappler;
         Support support;
 
+        CapacitySensor capacitySensor;
+
         LIDARSensor lidar;
         GeigerCounter geiger;
         Camera camera;
@@ -98,6 +100,8 @@ namespace Implementierung
             this.grappler = new Grappler();
             this.support = new Support();
             
+            
+
             this.currentLoad = 0;
 
             this.boxCover = new BoxCover();
@@ -106,6 +110,8 @@ namespace Implementierung
             this.camera = new Camera();
             this.microphon = new Microphon();
             this.loudspeaker = new Loudspeaker();
+            
+            this.capacitySensor = new CapacitySensor();
 
             //Objektbergung-Subsystem:
             this.lidar = new LIDARSensor();
@@ -159,6 +165,7 @@ namespace Implementierung
         // Fahren auslagern in eigene Methode -> Effektiver
         public void driveForward()
         // da sich der bot nicht dreht, ist vorne immer norden auf der karte
+        // Nicht mit Type of sondern über den sensor! das gilt für alle arten der bewegung!
         {
             if (inFront.returnTraversable())
             {
