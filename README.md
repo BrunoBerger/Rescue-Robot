@@ -20,9 +20,6 @@ Die Übersicht über die geplante und getane Arbeit für jede Woche ist mit GitH
 
 Die Allgemeine Übersicht über die gesamten Aufgaben ist auf [Trello][trello] zu finden.
 
-In diesem Repo wird separat die Möglichkeit einer Umsetzung der Umgebung in Unity getestet:
-https://github.com/BrunoBerger/rescueBot_UnityEnv
-
 #
 ### Requirements
 
