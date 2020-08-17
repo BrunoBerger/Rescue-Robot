@@ -177,6 +177,7 @@ namespace Implementierung
                 {
                     Console.WriteLine("There is Water!");
                 }
+                positionY --;
             }
             else
             {
@@ -295,6 +296,7 @@ namespace Implementierung
                         if ((this.currentLoad + weight) <= maxTransportWeight)
                         {
                             collectObstacle(obstacle, weight);
+                            collectObstacle(weight);
                         }
                         else
                         {
@@ -307,6 +309,7 @@ namespace Implementierung
         }
         
         public void collectObstacle(RadioactiveObstacle obstacle, double weight)
+        public void collectObstacle(double weight)
         {
             // box öffnen
             // geschlossenen greifer über die box bewegen
