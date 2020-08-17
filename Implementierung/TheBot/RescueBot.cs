@@ -92,7 +92,7 @@ namespace Implementierung
             this.motorChainDriveLeft = new Motor(100,"ChainDriveLeft",false,0,0);
             this.motorChainDriveRight = new Motor(100,"ChainDriveRight",false,0,0);
             this.turbine = new Motor(100,"Turbine",false,0,0);
-            this.rudder = new Motor(100,"Rudder",false,0,0);
+            this.rudder = new Motor(100,"Rudder",false,0,100);
 
             // Initilise Grappler and support
             this.grappler = new Grappler();
@@ -149,11 +149,51 @@ namespace Implementierung
         }
         public void getSignal()
         {
-            
+            rightAntenna.getSignal();
+            // das signal muss durch die antennen empfangen werden
+            // Der bot soll zu dem Funkturm Fahren zu dem die distanz am geringsten ist.
+            // sind 2 Funktürme gleich weit entfernt soll der zufall entscheiden welcher weg gewählt wird
+            // Die funktürme müssen das funksignal mit der ID und den Koordinaten versenden
+            // Ist der Bot direkt neben einem funkturm soll er diesen Ignorieren und dann wieder zum nächsten fahren!
+            // Sind hindernisse im Weg, soll der bot diese umfahren
+            // befinden sich radioaktive hindernisse auf dem weg soll der bot diese aufsammeln wenn sie den anforderungen entsprechen.
+            // die getSignal() Methode soll die Koordinaten des Funkturms Zurück geben welcher angesteuert wird.
+            // die calcDist() Methode wird verwendet um die entfernung zu den einzelnen Funktürmen zu berechnen
         }
         public void trackSignal()
         {
             
+        }
+
+        public int[] coordsToClosest()
+        {
+            int[] coords = new int[2];
+            coords[0] = 1;
+            coords[1] = 2; 
+            return coords;
+        }
+
+        public double calcDist(int radioPosX, int radioPosY)
+        {
+            int difX = this.positionX - radioPosX;
+            int difY = this.positionY - radioPosY;
+            if (difX < 0)
+            {
+                difX = difX *(-1);
+            }
+            if (difY < 0)
+            {
+                difY = difY *(-1);
+            }
+            double dist = Math.Sqrt(Math.Pow(difX,2) + Math.Pow(difY,2));
+            Console.WriteLine("difX {0}, dify {1}, dist {2}",difX,difY,dist);
+            return dist;
+        }
+
+        public void startNavigation(RescueBot rescueBot)
+        {
+            // destination muss aus getsignal und calc distance hervorgehen
+            navigation.startNavigation(rescueBot, 1,2);
         }
 
         // Fahren auslagern in eigene Methode -> Effektiver
@@ -162,14 +202,7 @@ namespace Implementierung
         {
             if (inFront.returnTraversable())
             {
-                if(inFront.GetType() != typeof(Water))
-                {
                     positionY --;
-                }
-                else
-                {
-                    Console.WriteLine("There is Water!");
-                }
             }
             else
             {
@@ -181,14 +214,7 @@ namespace Implementierung
         {
             if (behind.returnTraversable())
             { 
-                if(behind.GetType() != typeof(Water))
-                {
                 positionY ++;
-                }                
-                else
-                {
-                    Console.WriteLine("There is Water!");
-                }
             }
             else
             {
@@ -200,14 +226,7 @@ namespace Implementierung
         {
             if (left.returnTraversable())
             {
-                 if(left.GetType() != typeof(Water))
-                {
                 positionX --;
-                }                
-                else
-                {
-                    Console.WriteLine("There is Water!");
-                }
             }
             else
             {
@@ -219,14 +238,7 @@ namespace Implementierung
         {
             if (right.returnTraversable())
             {
-                if(right.GetType() != typeof(Water))
-                {
                 positionX ++;
-                }
-                else
-                {
-                    Console.WriteLine("There is Water!");
-                }
             }
             else
             {
@@ -236,7 +248,7 @@ namespace Implementierung
         public void swimForward()
         // da sich der bot nicht dreht, ist vorne immer norden auf der karte
         {
-            
+
         }
         public void swimBackward()
         // da sich der bot nicht dreht, ist hinten immer süden auf der karte
@@ -321,7 +333,6 @@ namespace Implementierung
             //Test
             Premises premises = new Premises(22, 20);
             
-            
             object[,] map = premises.generateMap();
             
             RescueBot rescueBot = new RescueBot(premises.returnStartingPosition()[0],premises.returnStartingPosition()[1], premises);
@@ -356,6 +367,8 @@ namespace Implementierung
             // entfernen der gegenstände auf der Karte                              DONE
             // Bot auf der Karte anzeigen
             // Bot auf der Karte bewegen
+            
+            rescueBot.startNavigation(rescueBot);
             
         }
     }

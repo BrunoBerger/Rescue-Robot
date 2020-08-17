@@ -16,5 +16,10 @@ public class Navigation
     {
 
     }
+    public void startNavigation(RescueBot rescuebot, int destX, int destY)
+    {
+        // navigation
+        
+    }
 }
 }
