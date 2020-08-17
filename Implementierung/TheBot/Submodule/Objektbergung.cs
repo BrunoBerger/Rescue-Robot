@@ -86,4 +86,22 @@ public class ForceTransducer
 	}
 }
 
+public class CapacitySensor
+{
+    public CapacitySensor()
+    {
+        Console.WriteLine("Capacity Sensor started!");
+    }
+    public bool checkWater(int botPosX, int botPosY, Premises premises)
+    {
+        if (premises.returnUnderground(botPosX,botPosY).GetType() == typeof(Water))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+}
 }
