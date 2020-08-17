@@ -26,7 +26,7 @@ public class Premises
         {"X", "0", "0", "H", "H", "0", "0", "0", "W", "W", "W", "0", "0", "0", "0", "0", "0", "0", "0", "X"},
         {"X", "0", "0", "H", "H", "0", "0", "0", "W", "W", "W", "0", "0", "0", "0", "0", "0", "0", "R", "X"},
         {"X", "0", "0", "H", "H", "0", "W", "W", "W", "W", "W", "0", "0", "0", "0", "0", "0", "0", "0", "X"},
-        {"X", "0", "R", "0", "0", "0", "W", "W", "W", "W", "W", "0", "H", "H", "H", "0", "R", "0", "0", "X"},
+        {"X", "R", "R", "0", "0", "0", "W", "W", "W", "W", "W", "0", "H", "H", "H", "0", "R", "0", "0", "X"},
         {"X", "0", "0", "0", "0", "0", "W", "W", "W", "W", "W", "0", "0", "0", "0", "0", "0", "0", "0", "X"},
         {"X", "0", "0", "0", "0", "0", "W", "W", "W", "W", "W", "0", "P", "0", "0", "0", "0", "0", "0", "X"},
         {"X", "0", "0", "0", "0", "0", "0", "H", "H", "0", "0", "0", "R", "0", "B", "0", "0", "0", "0", "X"},
@@ -62,6 +62,7 @@ P = Person
 */
     public object[,] generateMap()
     {
+        int IDcounter = 0;
         Random random = new Random();
         for (int i = 0; i < mapArr.GetLength(0); i++)
             {
@@ -100,7 +101,8 @@ P = Person
                             break;
                         // Funkturm
                         case "F":
-                                this.objArr[i,j] = new RadioTower(j,i);
+                                this.objArr[i,j] = new RadioTower(j,i,IDcounter);
+                                IDcounter ++;
                             break;
                         // Normaler Boden -> Freie fahrt!
                         case "0":
@@ -132,6 +134,12 @@ P = Person
                 }
             }
         return objArr;
+    }
+
+    public void radioTowerSend()
+    {
+        // sendet jedes mal die signale der Funktürme
+        
     }
 
     public object returnUnderground(int x,int y)
@@ -317,24 +325,40 @@ public class StrongGround : Ground
 public class RadioTower : Ground
 {
     bool traversable;
-    string ID;
-    public RadioTower(int posX, int posY) : base(posX,posY)
+    int ID;
+    RadioSignal radioSignal;
+    public RadioTower(int posX, int posY, int id) : base(posX,posY)
     {
         this.traversable = false;
-        Console.WriteLine("Radio Tower Generated at X:{0} and Y:{1}!",this.positionX,this.positionY);
+        this.ID = id;
+        this.radioSignal = new RadioSignal(ID, posX, posY);
+        Console.WriteLine("Radio Tower Generated at X:{0} and Y:{1} ID:{2}!",this.positionX,this.positionY,this.ID);
+        
     }
     public override bool returnTraversable()
     {
         return this.traversable;
+    }
+    public int[] sendMessage()
+    {
+        return radioSignal.sendMessage();
     }
     
 }
 public class RadioSignal
 {
     int ID;
-    public RadioSignal(int id)
+    int[] message = new int[3];
+    public RadioSignal(int id, int posX, int posY)
     {
         this.ID = id;
+        this.message[0] = id;               // ID des Funkturms
+        this.message[1] = posX;       // X Koordinate des sendenden Funkturms
+        this.message[2] = posY;       // Y Koordinate des sendenden Funkturms
+    }
+    public int[] sendMessage()
+    {
+        return this.message;
     }
 }
 

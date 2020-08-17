@@ -38,7 +38,7 @@ namespace Implementierung
     }
 
     public class RescueBot
-    {   
+    {
 
         int positionX;
         int positionY;
@@ -47,13 +47,13 @@ namespace Implementierung
         int maxTransportWeight = 200;
         double currentLoad = 0;
         // Bot sollte wissen was sich um ihn herum befindet und auf welchem untergrund er sich aktuell befindet.
-        
+
         Ground left;
         Ground right;
         Ground behind;
         Ground inFront;
         Ground current;
-        
+
         Motor motorChainDriveLeft;
         Motor motorChainDriveRight;
         Motor turbine;
@@ -77,11 +77,11 @@ namespace Implementierung
         Navigation navigation;
         BoxCover boxCover;
         Premises premises;
-        
+
         // Der bot sollte noch eine Eigene Karte haben die er zur laufzeit erstellt um den weg zurück zu finden.
         public RescueBot(int posX, int posY, Premises premises)
         {
-            
+
             this.premises = premises;
 
             this.positionX = posX;
@@ -94,13 +94,13 @@ namespace Implementierung
             this.motorChainDriveLeft = new Motor(100,"ChainDriveLeft",false,0,0);
             this.motorChainDriveRight = new Motor(100,"ChainDriveRight",false,0,0);
             this.turbine = new Motor(100,"Turbine",false,0,0);
-            this.rudder = new Motor(100,"Rudder",false,0,0);
+            this.rudder = new Motor(100,"Rudder",false,0,100);
 
             // Initilise Grappler and support
             this.grappler = new Grappler();
             this.support = new Support();
-            
-            
+
+
 
             this.currentLoad = 0;
 
@@ -110,7 +110,7 @@ namespace Implementierung
             this.camera = new Camera();
             this.microphon = new Microphon();
             this.loudspeaker = new Loudspeaker();
-            
+
             this.capacitySensor = new CapacitySensor();
 
             //Objektbergung-Subsystem:
@@ -125,7 +125,7 @@ namespace Implementierung
             this.rightAntenna = new RightAntenna();
             this.backsideAntenna = new BacksideAntenna();
 
-            
+
         }
 
         public void updateSurroundings()
@@ -140,7 +140,7 @@ namespace Implementierung
             this.inFront = sourroundings[4];
 
 
-            // Debug Print 
+            // Debug Print
             // was ist um mich herum....
             foreach (Ground X in sourroundings)
             {
@@ -151,15 +151,55 @@ namespace Implementierung
 
         public void signalRequest()
         {
-            
+
         }
         public void getSignal()
         {
-            
+            rightAntenna.getSignal();
+            // das signal muss durch die antennen empfangen werden
+            // Der bot soll zu dem Funkturm Fahren zu dem die distanz am geringsten ist.
+            // sind 2 Funktürme gleich weit entfernt soll der zufall entscheiden welcher weg gewählt wird
+            // Die funktürme müssen das funksignal mit der ID und den Koordinaten versenden
+            // Ist der Bot direkt neben einem funkturm soll er diesen Ignorieren und dann wieder zum nächsten fahren!
+            // Sind hindernisse im Weg, soll der bot diese umfahren
+            // befinden sich radioaktive hindernisse auf dem weg soll der bot diese aufsammeln wenn sie den anforderungen entsprechen.
+            // die getSignal() Methode soll die Koordinaten des Funkturms Zurück geben welcher angesteuert wird.
+            // die calcDist() Methode wird verwendet um die entfernung zu den einzelnen Funktürmen zu berechnen
         }
         public void trackSignal()
         {
-            
+
+        }
+
+        public int[] coordsToClosest()
+        {
+            int[] coords = new int[2];
+            coords[0] = 1;
+            coords[1] = 2;
+            return coords;
+        }
+
+        public double calcDist(int radioPosX, int radioPosY)
+        {
+            int difX = this.positionX - radioPosX;
+            int difY = this.positionY - radioPosY;
+            if (difX < 0)
+            {
+                difX = difX *(-1);
+            }
+            if (difY < 0)
+            {
+                difY = difY *(-1);
+            }
+            double dist = Math.Sqrt(Math.Pow(difX,2) + Math.Pow(difY,2));
+            Console.WriteLine("difX {0}, dify {1}, dist {2}",difX,difY,dist);
+            return dist;
+        }
+
+        public void startNavigation(RescueBot rescueBot)
+        {
+            // destination muss aus getsignal und calc distance hervorgehen
+            navigation.startNavigation(rescueBot, 1,2);
         }
 
         // Fahren auslagern in eigene Methode -> Effektiver
@@ -180,7 +220,7 @@ namespace Implementierung
         // da sich der bot nicht dreht, ist hinten immer süden auf der karte
         {
             if (behind.returnTraversable())
-            { 
+            {
                 positionY ++;
             }
             else
@@ -215,32 +255,32 @@ namespace Implementierung
         public void swimForward()
         // da sich der bot nicht dreht, ist vorne immer norden auf der karte
         {
-            
+
         }
         public void swimBackward()
         // da sich der bot nicht dreht, ist hinten immer süden auf der karte
         {
-            
+
         }
         public void swimLeft()
         // da sich der bot nicht dreht, ist links immer westen auf der karte
         {
-            
+
         }
-        
+
         public void swimRight()
         // da sich der bot nicht dreht, ist rechts immer osten auf der karte
         {
-            
+
         }
-        
+
         public void stop()
         {
-            
+
         }
-        
+
         public void measureAndCollectObstacle(RadioactiveObstacle obstacle, double maxWeight, double maxSize)
-        {   
+        {
             // Per Lidar die größe des Objektes ermitteln
             // wenn Größe passend, dann
             // Greifer zum Objekt bewegen
@@ -250,7 +290,7 @@ namespace Implementierung
             // Gewicht des objektes abfragen über force Tranducer
             // Entscheiden ob es zu schwer/zu groß ist oder nicht
             // rückgabe wert true wenn das objekt bewegt werden kann || False wenn nicht
-            
+
             double size = lidar.determineSize(obstacle);
             if (size <= maxSize)
             {
@@ -277,7 +317,7 @@ namespace Implementierung
             }
             support.retract();
         }
-        
+
         public void collectObstacle(double weight)
         {
             // box öffnen
@@ -299,13 +339,12 @@ namespace Implementierung
 
             //Test
             Premises premises = new Premises(22, 20);
-            
-            
+
             object[,] map = premises.generateMap();
-            
+
             RescueBot rescueBot = new RescueBot(premises.returnStartingPosition()[0],premises.returnStartingPosition()[1], premises);
             // Start navigation oder so
-            
+
             // Bot ground movement Test // --> Works!!!
             /*
             rescueBot.updateSurroundings();
@@ -328,11 +367,16 @@ namespace Implementierung
             rescueBot.driveForward();
             */
 
-            // TODO: 
-            // Navigations algorithmus                                  
-            // Automatisches aufsammeln von passenden gegenständen                  
-            // wenn sie sich links, rechts, vor oder hinter dem fahrzeug befinden    
+            // TODO:
+            // Navigations algorithmus
+            // Automatisches aufsammeln von passenden gegenständen
+            // wenn sie sich links, rechts, vor oder hinter dem fahrzeug befinden
             // entfernen der gegenstände auf der Karte                              DONE
+            // Bot auf der Karte anzeigen
+            // Bot auf der Karte bewegen
+
+            rescueBot.startNavigation(rescueBot);
+
         }
     }
 }

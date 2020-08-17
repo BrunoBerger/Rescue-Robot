@@ -1,0 +1,3 @@
+numpy==1.18.3
+ikpy==3.0.1
+matplotlib==3.2.1

@@ -6,12 +6,12 @@ entwickelt werden, der bei einem Industrieunfall wie einer Explosion seinen Eins
 #
 ### Produkteinsatz
 Zur Zielgruppe gehören nicht nur das Industriegewerbe selbst, sondern auch Rettungsdienste, die direkten Angestellten der Firma, sowie das Firmengelände selbst.
-![Systemumgebung](Diagramme/Steakholder.png "Systemumgebung")
+![Systemumgebung](Diagramme/System_Umgebung.png "Systemumgebung")
 
 #
 ### Einsatzgebiet
 Der Rescue-Robot soll sich autonom auf dem Industriegelände bewegen und sich über Radiosignale navigieren. Hindernisse wie Gesteinsbrocken oder Wasser sollen umfahren oder durchquert werden. Verletzte Personen sollen über den Rescue-Robot nach außen kommunizieren können. Zudem sollen auch radioaktive Gegenstände gesichert werden können.
-![Einsatzgebiet](Diagramme/Environment.png "Einsatzgebiet")
+![Einsatzgebiet](Diagramme/Subsysteme/Class_Diagram_Firmengelaende.png "Einsatzgebiet")
 
 #
 ### Allgemeines zum Projekt
@@ -19,9 +19,6 @@ Die Übersicht über die geplante und getane Arbeit für jede Woche ist mit GitH
 [Project Boards][projects]
 
 Die Allgemeine Übersicht über die gesamten Aufgaben ist auf [Trello][trello] zu finden.
-
-In diesem Repo wird separat die Möglichkeit einer Umsetzung der Umgebung in Unity getestet:
-https://github.com/BrunoBerger/rescueBot_UnityEnv
 
 #
 ### Requirements
