@@ -169,14 +169,6 @@ namespace Implementierung
         {
             if (inFront.returnTraversable())
             {
-                if(inFront.GetType() != typeof(Water))
-                {
-                    positionY --;
-                }
-                else
-                {
-                    Console.WriteLine("There is Water!");
-                }
                 positionY --;
             }
             else
@@ -189,14 +181,7 @@ namespace Implementierung
         {
             if (behind.returnTraversable())
             { 
-                if(behind.GetType() != typeof(Water))
-                {
                 positionY ++;
-                }                
-                else
-                {
-                    Console.WriteLine("There is Water!");
-                }
             }
             else
             {
@@ -208,14 +193,7 @@ namespace Implementierung
         {
             if (left.returnTraversable())
             {
-                 if(left.GetType() != typeof(Water))
-                {
                 positionX --;
-                }                
-                else
-                {
-                    Console.WriteLine("There is Water!");
-                }
             }
             else
             {
@@ -227,14 +205,7 @@ namespace Implementierung
         {
             if (right.returnTraversable())
             {
-                if(right.GetType() != typeof(Water))
-                {
                 positionX ++;
-                }
-                else
-                {
-                    Console.WriteLine("There is Water!");
-                }
             }
             else
             {
@@ -295,7 +266,6 @@ namespace Implementierung
                     {
                         if ((this.currentLoad + weight) <= maxTransportWeight)
                         {
-                            collectObstacle(obstacle, weight);
                             collectObstacle(weight);
                         }
                         else
@@ -308,7 +278,6 @@ namespace Implementierung
             support.retract();
         }
         
-        public void collectObstacle(RadioactiveObstacle obstacle, double weight)
         public void collectObstacle(double weight)
         {
             // box öffnen
