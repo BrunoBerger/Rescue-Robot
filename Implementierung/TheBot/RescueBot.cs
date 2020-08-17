@@ -59,9 +59,9 @@ namespace Implementierung
         Motor turbine;
         Motor rudder;
 
-        Antenna leftAntenna;
-        Antenna rightAntenna;
-        Antenna backsideAntenna;
+        LeftAntenna leftAntenna;
+        RightAntenna rightAntenna;
+        BacksideAntenna backsideAntenna;
 
         Grappler grappler;
         Support support;
@@ -124,15 +124,13 @@ namespace Implementierung
             this.leftAntenna = new LeftAntenna();
             this.rightAntenna = new RightAntenna();
             this.backsideAntenna = new BacksideAntenna();
-
-
         }
 
         public void updateSurroundings()
         {
             // muss mit Lidar geupdated werden
             Ground[] sourroundings = new Ground[5];
-            sourroundings = lidar.detectSourroundings(this.positionX,this.positionY,premises);
+            sourroundings = lidar.detectSourroundings(this.positionX,this.positionY,this.premises);
             this.current = sourroundings[0];
             this.left = sourroundings[1];
             this.right = sourroundings[2];
@@ -151,33 +149,63 @@ namespace Implementierung
 
         public void signalRequest()
         {
-
+            
         }
-        public void getSignal()
+        public int[,] getSignal()
         {
-            rightAntenna.getSignal();
+            int[,] message = new int[3,3];
+            // message ={{ID,posx,posy},{ID,posx,posy},{ID,posx,posy}}
+            message = rightAntenna.getSignal(this.premises);
+            
             // das signal muss durch die antennen empfangen werden
             // Der bot soll zu dem Funkturm Fahren zu dem die distanz am geringsten ist.
-            // sind 2 Funktürme gleich weit entfernt soll der zufall entscheiden welcher weg gewählt wird
             // Die funktürme müssen das funksignal mit der ID und den Koordinaten versenden
             // Ist der Bot direkt neben einem funkturm soll er diesen Ignorieren und dann wieder zum nächsten fahren!
             // Sind hindernisse im Weg, soll der bot diese umfahren
             // befinden sich radioaktive hindernisse auf dem weg soll der bot diese aufsammeln wenn sie den anforderungen entsprechen.
             // die getSignal() Methode soll die Koordinaten des Funkturms Zurück geben welcher angesteuert wird.
             // die calcDist() Methode wird verwendet um die entfernung zu den einzelnen Funktürmen zu berechnen
+            return message;
         }
         public void trackSignal()
         {
 
         }
 
-        public int[] coordsToClosest()
+
+        // nur zum testen!!!!
+        public int[] coordsToClosest(int[,] message)
         {
-            int[] coords = new int[2];
-            coords[0] = 1;
-            coords[1] = 2;
+            int[] coords = new int[3];
+
+            double dist1 = calcDist(message[0,1],message[0,2]);
+            double dist2 = calcDist(message[1,1],message[1,2]);
+            double dist3 = calcDist(message[2,1],message[2,2]);
+
+            double min = Math.Min(Math.Min(dist1,dist2),dist3);
+
+            if(min == dist1)
+            {
+                coords[0] = message[0,0];
+                coords[1] = message[0,1];
+                coords[2] = message[0,2];
+            }
+            else if(min == dist2)
+            {
+                coords[0] = message[1,0];
+                coords[1] = message[1,1];
+                coords[2] = message[1,2];
+            }
+            else if(min == dist3)
+            {
+                coords[0] = message[2,0];
+                coords[1] = message[2,1];
+                coords[2] = message[2,2];
+            }
             return coords;
         }
+
+
 
         public double calcDist(int radioPosX, int radioPosY)
         {
@@ -192,14 +220,17 @@ namespace Implementierung
                 difY = difY *(-1);
             }
             double dist = Math.Sqrt(Math.Pow(difX,2) + Math.Pow(difY,2));
-            Console.WriteLine("difX {0}, dify {1}, dist {2}",difX,difY,dist);
             return dist;
         }
 
         public void startNavigation(RescueBot rescueBot)
         {
+            int destX = coordsToClosest(getSignal())[1];
+            int destY = coordsToClosest(getSignal())[2];
+            Console.WriteLine("Kürzeste distanz ist bei {0} {1}", destX, destY);
             // destination muss aus getsignal und calc distance hervorgehen
-            navigation.startNavigation(rescueBot, 1,2);
+            navigation.startNavigation(rescueBot,destX,destY);
+            
         }
 
         // Fahren auslagern in eigene Methode -> Effektiver

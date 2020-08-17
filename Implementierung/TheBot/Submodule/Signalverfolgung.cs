@@ -2,12 +2,14 @@ using System;
 
 namespace Implementierung
 {
-public class Antenna
+public abstract class Antenna
 {
-    public void getSignal()
+    public Antenna()
     {
 
     }
+    
+
 }
 
 public class LeftAntenna : Antenna
@@ -22,6 +24,12 @@ public class RightAntenna : Antenna
     public RightAntenna()
     {
         Console.WriteLine("Right Antenna started!");
+    }
+    public int[,] getSignal(Premises premises)
+    {
+        int[,] allmessages = new int[3,3];
+        allmessages = premises.radioTowersSend();
+        return allmessages;
     }
 }
 public class BacksideAntenna : Antenna

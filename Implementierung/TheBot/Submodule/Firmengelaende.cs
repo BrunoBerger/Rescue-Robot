@@ -4,7 +4,6 @@ namespace Implementierung
 {
 public class Premises
 {
-    
     int length;
     int width;
     int startPositionX;
@@ -34,6 +33,8 @@ public class Premises
         {"X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X"}
     };
     object[,] objArr = new object[22, 20];
+
+    RadioTower[] RadioTowerArray = new RadioTower[3];   // Festgelegte Länge -> Maximal 3 RadioTower möglich!
     public Premises(int Length, int Width)
     {
         this.length = Length;
@@ -102,6 +103,7 @@ P = Person
                         // Funkturm
                         case "F":
                                 this.objArr[i,j] = new RadioTower(j,i,IDcounter);
+                                RadioTowerArray[IDcounter] = (RadioTower)this.objArr[i,j];      // Hinzufügen der RadioTower zum Array 
                                 IDcounter ++;
                             break;
                         // Normaler Boden -> Freie fahrt!
@@ -136,10 +138,22 @@ P = Person
         return objArr;
     }
 
-    public void radioTowerSend()
+    public int[,] radioTowersSend()
     {
+        int[,] allmessages = new int[3,3];
+        int counter = 0;
         // sendet jedes mal die signale der Funktürme
-        
+        foreach (RadioTower radioTower in RadioTowerArray)
+        {
+            // Message = {ID,posx,posy}
+            // Allmessages ={{ID,posx,posy},{ID,posx,posy},{ID,posx,posy}}
+            allmessages[counter, 0] = radioTower.sendMessage()[0];
+            allmessages[counter, 1] = radioTower.sendMessage()[1];
+            allmessages[counter, 2] = radioTower.sendMessage()[2];
+            counter ++;
+        }
+        Console.WriteLine("All Radiotowers sendet their message!");
+        return allmessages;
     }
 
     public object returnUnderground(int x,int y)
@@ -342,6 +356,11 @@ public class RadioTower : Ground
     public int[] sendMessage()
     {
         return radioSignal.sendMessage();
+    }
+
+    public void test()
+    {
+        Console.WriteLine("ID: {0}    {1}",this.ID,this.positionX);
     }
     
 }
