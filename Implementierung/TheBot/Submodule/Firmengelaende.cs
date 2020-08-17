@@ -258,7 +258,6 @@ public class StartingPoint : Ground
 
 public class Wall : Ground
 {
-    // im Diagramm hinzufügen
     bool traversable;
     public Wall(int posX, int posY) : base(posX,posY)
     {
