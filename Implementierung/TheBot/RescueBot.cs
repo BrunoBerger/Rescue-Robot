@@ -126,6 +126,14 @@ namespace Implementierung
             this.backsideAntenna = new BacksideAntenna();
         }
 
+        public int returnXpos()
+        {
+            return this.positionX;
+        }
+        public int returnYpos()
+        {
+            return this.positionY;
+        }
         public void updateSurroundings()
         {
             // muss mit Lidar geupdated werden
@@ -227,7 +235,6 @@ namespace Implementierung
         {
             int destX = coordsToClosest(getSignal())[1];
             int destY = coordsToClosest(getSignal())[2];
-            Console.WriteLine("Kürzeste distanz ist bei {0} {1}", destX, destY);
             // destination muss aus getsignal und calc distance hervorgehen
             navigation.startNavigation(rescueBot,destX,destY);
             
@@ -405,7 +412,6 @@ namespace Implementierung
             // entfernen der gegenstände auf der Karte                              DONE
             // Bot auf der Karte anzeigen
             // Bot auf der Karte bewegen
-
             rescueBot.startNavigation(rescueBot);
 
         }
