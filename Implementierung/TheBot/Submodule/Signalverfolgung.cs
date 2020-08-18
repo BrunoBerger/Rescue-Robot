@@ -2,41 +2,41 @@ using System;
 
 namespace Implementierung
 {
-public abstract class Antenna
-{
-    public Antenna()
+    public abstract class Antenna
     {
+        public Antenna()
+        {
+
+        }
+        
 
     }
-    
 
-}
-
-public class LeftAntenna : Antenna
-{
-    public LeftAntenna()
+    public class LeftAntenna : Antenna
     {
-        Console.WriteLine("Left Antenna started!");
+        public LeftAntenna()
+        {
+            Console.WriteLine("Left Antenna started!");
+        }
     }
-}
-public class RightAntenna : Antenna
-{
-    public RightAntenna()
+    public class RightAntenna : Antenna
     {
-        Console.WriteLine("Right Antenna started!");
+        public RightAntenna()
+        {
+            Console.WriteLine("Right Antenna started!");
+        }
+        public int[,] getSignal(Premises premises)
+        {
+            int[,] allmessages = new int[3,3];
+            allmessages = premises.radioTowersSend();
+            return allmessages;
+        }
     }
-    public int[,] getSignal(Premises premises)
+    public class BacksideAntenna : Antenna
     {
-        int[,] allmessages = new int[3,3];
-        allmessages = premises.radioTowersSend();
-        return allmessages;
+        public BacksideAntenna()
+        {
+            Console.WriteLine("Backside Antenna started!");
+        }
     }
-}
-public class BacksideAntenna : Antenna
-{
-    public BacksideAntenna()
-    {
-        Console.WriteLine("Backside Antenna started!");
-    }
-}
 }
