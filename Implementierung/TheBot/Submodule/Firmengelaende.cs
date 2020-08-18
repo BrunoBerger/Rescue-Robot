@@ -41,12 +41,12 @@ namespace Implementierung
             this.width = Width;
             Console.WriteLine("Premises started!");
         }
-        
+
     /*
     ------------------------------------------------------------------------------------------------------------------------------------------------
     H = Hinderniss                  Heißt hier piece of rock und ist ein nicht bewegliches Hinderniss
     B = Objekt was zum bergen       Heißt hier obstacle und kann aus dem weg geräumt werden wenn es leicht genug ist.
-    W = Wasser                      
+    W = Wasser
     0 = Freiefahrt
     X = Äußere begrenzung
     S = Startpunkt
@@ -55,7 +55,7 @@ namespace Implementierung
     P = Person
     ------------------------------------------------------------------------------------------------------------------------------------------------
     !!!Der 0-Punkt ist die Obere Linke Ecke!!!
-    0 1 2 3 
+    0 1 2 3
     1
     2
     3
@@ -103,7 +103,7 @@ namespace Implementierung
                             // Funkturm
                             case "F":
                                     this.objArr[i,j] = new RadioTower(j,i,IDcounter);
-                                    RadioTowerArray[IDcounter] = (RadioTower)this.objArr[i,j];      // Hinzufügen der RadioTower zum Array 
+                                    RadioTowerArray[IDcounter] = (RadioTower)this.objArr[i,j];      // Hinzufügen der RadioTower zum Array
                                     IDcounter ++;
                                 break;
                             // Normaler Boden -> Freie fahrt!
@@ -123,7 +123,7 @@ namespace Implementierung
                                     double randRad = Math.Round(random.NextDouble() * 50 , 4, MidpointRounding.ToEven);
                                     this.objArr[i,j] = new RadioactiveObstacle(randWeightRad,randSizeRad,j,i,randRad);
                                 break;
-                            // Person 
+                            // Person
                             case "P":
                                     // Villeicht n Array mit verschiedenen schädigungen der Person aus dem eine Zufällige ausgewält wird
                                     this.objArr[i,j] = new Person(j,i,"Broken Arm");
@@ -132,7 +132,7 @@ namespace Implementierung
                             default:
                                     Console.WriteLine("Letter {0} not Found!", mapArr[i,j]);
                                 break;
-                        }                
+                        }
                     }
                 }
             return objArr;
@@ -236,10 +236,9 @@ namespace Implementierung
             this.traversable = false;
             this.weightKG = Weight;
             this.size = Size;
-            this.radioactiveValue = Radiation;   
+            this.radioactiveValue = Radiation;
             Console.WriteLine("Radioactive Obstacle generated! X: {0} , Y: {1} , KG: {2} , Size: {3} ,Rad: {4}", this.positionX,this.positionY,this.weightKG,this.size,this.radioactiveValue);
         }
-
         public double returnRadiation()
         {
             return this.radioactiveValue;
@@ -248,6 +247,14 @@ namespace Implementierung
         {
             return this.traversable;
         }
+      }
+public class Water : Ground
+{
+    double capacity = 4.2; //Wert?
+    bool traversable;
+    public Water(int posX, int posY) : base(posX,posY)
+    {
+        this.traversable = true;
     }
 
     public class Water : Ground
@@ -292,6 +299,45 @@ namespace Implementierung
             return this.traversable;
         }
 
+}
+public class Fog : Ground
+{
+    // im Diagramm hinzufügen
+    bool traversable;
+    public Fog(int posX, int posY) : base(posX,posY)
+    {
+        this.traversable = true;
+        Console.WriteLine("Fog Generated!");
+    }
+    public override bool returnTraversable()
+    {
+        return this.traversable;
+    }
+}
+public class PieceOfRock : Ground
+// Nicht bewegbares Hinderniss!
+{
+    // im Diagramm hinzufügen
+    bool traversable;
+    public PieceOfRock(int posX, int posY) : base(posX,posY)
+    {
+        this.traversable = false;
+        Console.WriteLine("Piece of Rock Generated at X:{0} and Y:{1}!", this.positionX, this.positionY);
+    }
+    public override bool returnTraversable()
+    {
+        return this.traversable;
+    }
+}
+public class StrongGround : Ground
+{
+    // im Diagramm hinzufügen
+    double capacity = 0.9; //Wert?
+    bool traversable;
+    public StrongGround(int posX, int posY) : base(posX,posY)
+    {
+        this.traversable = true;
+        Console.WriteLine("Strong Ground Generated at X:{0} and Y:{1}!",this.positionX,this.positionY);
     }
     public class Fog : Ground
     {
@@ -347,7 +393,7 @@ namespace Implementierung
             this.ID = id;
             this.radioSignal = new RadioSignal(ID, posX, posY);
             Console.WriteLine("Radio Tower Generated at X:{0} and Y:{1} ID:{2}!",this.positionX,this.positionY,this.ID);
-            
+
         }
         public override bool returnTraversable()
         {
@@ -362,7 +408,7 @@ namespace Implementierung
         {
             Console.WriteLine("ID: {0}    {1}",this.ID,this.positionX);
         }
-        
+
     }
     public class RadioSignal
     {
