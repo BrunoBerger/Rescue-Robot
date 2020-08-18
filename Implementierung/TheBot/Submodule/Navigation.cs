@@ -14,6 +14,7 @@ public class Navigation
     }
     public void detectWater()
     {
+        
 
     }
     public void startNavigation(RescueBot rescuebot, int destX, int destY)
