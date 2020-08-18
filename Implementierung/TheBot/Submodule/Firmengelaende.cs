@@ -252,7 +252,7 @@ public class RadioactiveObstacle : Obstacle
 
 public class Water : Ground
 {
-    double capacity_kJ = 4.2;
+    double capacity = 4.2; //Wert?
     bool traversable;
     public Water(int posX, int posY) : base(posX,posY)
     {
@@ -326,7 +326,7 @@ public class PieceOfRock : Ground
 public class StrongGround : Ground
 {
     // im Diagramm hinzufügen
-    double capacity_kJ = 0.9; //Beton = 0.88kJ
+    double capacity = 0.9; //Wert?
     bool traversable;
     public StrongGround(int posX, int posY) : base(posX,posY)
     {
