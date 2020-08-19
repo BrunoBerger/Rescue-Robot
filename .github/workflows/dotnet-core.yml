@@ -21,6 +21,6 @@ jobs:
       with:
         dotnet-version: 3.1.301
     - name: Install dependencies
-      run: .\Implementierung\TheBot\ dotnet restore
+      run: dotnet restore .\Implementierung\TheBot\
     - name: Build
       run: dotnet build .\Implementierung\TheBot\ --configuration Release --no-restore
