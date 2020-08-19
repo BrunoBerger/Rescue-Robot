@@ -27,8 +27,8 @@ namespace Implementierung
             {"X", "0", "0", "H", "H", "0", "W", "W", "W", "W", "W", "0", "0", "0", "0", "0", "0", "0", "0", "X"},
             {"X", "R", "R", "0", "0", "0", "W", "W", "W", "W", "W", "0", "H", "H", "H", "0", "R", "0", "0", "X"},
             {"X", "0", "0", "0", "0", "0", "W", "W", "W", "W", "W", "0", "0", "0", "0", "0", "0", "0", "0", "X"},
-            {"X", "0", "0", "0", "0", "0", "W", "W", "W", "W", "W", "0", "P", "0", "0", "0", "0", "0", "0", "X"},
-            {"X", "0", "0", "0", "0", "0", "0", "H", "H", "0", "0", "0", "R", "0", "B", "0", "0", "0", "0", "X"},
+            {"X", "0", "0", "0", "0", "0", "W", "W", "W", "W", "W", "0", "0", "0", "0", "0", "0", "0", "0", "X"},
+            {"X", "0", "0", "0", "0", "0", "0", "H", "H", "0", "0", "0", "R", "0", "B", "0", "0", "0", "P", "X"},
             {"X", "S", "0", "0", "0", "0", "0", "H", "H", "0", "0", "0", "0", "0", "0", "0", "R", "0", "F", "X"},
             {"X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X"}
         };
@@ -248,18 +248,11 @@ namespace Implementierung
             return this.traversable;
         }
       }
-public class Water : Ground
-{
-    double capacity = 4.2; //Wert?
-    bool traversable;
-    public Water(int posX, int posY) : base(posX,posY)
-    {
-        this.traversable = true;
-    }
 
     public class Water : Ground
     {
         bool traversable;
+        double capacity = 4.2; //Wert?
         public Water(int posX, int posY) : base(posX,posY)
         {
             this.traversable = true;
@@ -339,49 +332,12 @@ public class StrongGround : Ground
         this.traversable = true;
         Console.WriteLine("Strong Ground Generated at X:{0} and Y:{1}!",this.positionX,this.positionY);
     }
-    public class Fog : Ground
+    public override bool returnTraversable()
     {
-        // im Diagramm hinzufügen
-        bool traversable;
-        public Fog(int posX, int posY) : base(posX,posY)
-        {
-            this.traversable = true;
-            Console.WriteLine("Fog Generated!");
-        }
-        public override bool returnTraversable()
-        {
-            return this.traversable;
-        }
+        return this.traversable;
     }
-    public class PieceOfRock : Ground
-    // Nicht bewegbares Hinderniss!
-    {
-        // im Diagramm hinzufügen
-        bool traversable;
-        public PieceOfRock(int posX, int posY) : base(posX,posY)
-        {
-            this.traversable = false;
-            Console.WriteLine("Piece of Rock Generated at X:{0} and Y:{1}!", this.positionX, this.positionY);
-        }
-        public override bool returnTraversable()
-        {
-            return this.traversable;
-        }
-    }
-    public class StrongGround : Ground
-    {
-        // im Diagramm hinzufügen
-        bool traversable;
-        public StrongGround(int posX, int posY) : base(posX,posY)
-        {
-            this.traversable = true;
-            Console.WriteLine("Strong Ground Generated at X:{0} and Y:{1}!",this.positionX,this.positionY);
-        }
-        public override bool returnTraversable()
-        {
-            return this.traversable;
-        }
-    }
+}
+
     public class RadioTower : Ground
     {
         bool traversable;

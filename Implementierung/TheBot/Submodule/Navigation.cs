@@ -30,7 +30,9 @@ namespace Implementierung
 
             int differenzX = destinationX - rescuebot.returnXpos();
             int differenzY = destinationY - rescuebot.returnYpos();
-
+            Console.WriteLine("PosY{0}, PosX{1}",rescuebot.returnYpos(),rescuebot.returnXpos());
+            rescuebot.updateSurroundings();
+            rescuebot.driveForward();
         }
     }
 }
