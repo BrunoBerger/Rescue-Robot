@@ -8,6 +8,7 @@ public class tankMovement : MonoBehaviour
     public Rigidbody leftTrack;
     public Rigidbody rightTrack;
     public Rigidbody prop;
+    public ParticleSystem splash;
 
     public Vector3 userInput;
     public Vector3 leftOutput;
@@ -34,6 +35,7 @@ public class tankMovement : MonoBehaviour
       rightTrack = this.transform.Find("rightTrack").GetComponent<Rigidbody>();
       prop = this.transform.Find("propeller").GetComponent<Rigidbody>();
 
+
       trackPower = 1500f;
       propPower = 1800f;
 
@@ -44,7 +46,7 @@ public class tankMovement : MonoBehaviour
     void Update()
     {
       userInput = new Vector3(Input.GetAxis("Horizontal"),0f,Input.GetAxis("Vertical"));
-      drawDebugRays();
+      // drawDebugRays();
     }
 
     void FixedUpdate()
@@ -71,13 +73,19 @@ public class tankMovement : MonoBehaviour
       {
         prop.AddRelativeTorque(0, userInput.x * propPower, 0, ForceMode.Impulse);
         prop.AddRelativeForce(new Vector3(0f, 0f, userInput.z) * propPower);
+        splash.Play();
         Debug.DrawRay(transform.position, transform.up*5, Color.white);
+      }
+      else
+      {
+        splash.Pause();
+        splash.Clear();
       }
     }
 
 
     // Collision-detection
-    void OnCollisionStay(Collision collisionInfo){
+    void OnCollisionEnter(Collision collisionInfo){
       if (collisionInfo.gameObject.tag == "boden"){
         isGrounded = true;
       }
@@ -99,7 +107,7 @@ public class tankMovement : MonoBehaviour
       Debug.DrawRay(leftTrack.transform.position, leftOutput * 8, Color.red);
       Debug.DrawRay(rightTrack.transform.position, rightOutput * 8, Color.blue);
       Debug.DrawRay(prop.transform.position, currentHeading * 8, Color.yellow);
-      // desiredHeading = userInput - this.transform.forward;
-      // Debug.DrawRay(mainBody.transform.position, desiredHeading * 15, Color.green);
+      desiredHeading = userInput - this.transform.forward;
+      Debug.DrawRay(mainBody.transform.position, desiredHeading * 15, Color.green);
     }
 }

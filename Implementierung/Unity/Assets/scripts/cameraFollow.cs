@@ -17,7 +17,7 @@ public class cameraFollow : MonoBehaviour
     void Start()
     {
       // target = GameObject.Find("Player");
-      camAngle.Set(cubePos.x, cubePos.y+4, cubePos.z-16);
+      camAngle.Set(cubePos.x, cubePos.y+2, cubePos.z-10);
     }
 
     // Update is called once per frame
