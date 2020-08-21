@@ -15,6 +15,6 @@ public class gizmoHelper : MonoBehaviour
     void Update()
     {
       var currentHeading = transform.forward;
-      Debug.DrawRay(transform.position, currentHeading * 15, Color.blue);
+      // Debug.DrawRay(transform.position, currentHeading * 15, Color.blue);
     }
 }

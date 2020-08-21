@@ -76,14 +76,14 @@ public class autoDrive : MonoBehaviour
 
     void OnCollisionEnter(Collision collisionInfo)
     {
-      if (collisionInfo.gameObject.name == "Terrain")
+      if (collisionInfo.gameObject.tag == "boden")
       {
         isgrounded = true;
       }
     }
     void OnCollisionExit(Collision collisionInfo)
     {
-      if (collisionInfo.gameObject.name == "Terrain")
+      if (collisionInfo.gameObject.tag == "boden")
       {
         isgrounded = false;
       }
