@@ -1,0 +1,20 @@
+ToDos (23.08.2020)
+
+Melanie 
+- Traversable einbringen ? 
+- Seite für Greifarm Simulation (zum Schluss bei zusammenfassung)
+- Ruder und Turbine einbringen (wo auf welcher Seite, evtl Subsystem Fortbewegung anders aufteilen)
+- Objekterkennung drin lassen? (besprechen)
+- Video Unity einbringen
+- Video C# einbringen
+- S29 - 3D Bilder Ketten und Turbine
+
+
+Lukas
+- Video von C#
+- Visualisierung Firmengelände aktualisieren
+
+
+Bruno
+- Video von Unity
+- Bild (python) Greifarm, Position anfahren Simulation
