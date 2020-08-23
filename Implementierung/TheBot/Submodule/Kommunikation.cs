@@ -22,7 +22,7 @@ namespace Implementierung
         }
         public void detectPerson()
         {
-
+            Console.WriteLine("Person detected!");
         }    
     }
 
@@ -32,7 +32,7 @@ namespace Implementierung
         {
             Console.WriteLine("Microphon started!");
         }
-        public void sendMessage()
+        public void reciveMessage()
         {
 
         }
@@ -46,7 +46,7 @@ namespace Implementierung
         }
         public void sendMessage()
         {
-
+            Console.WriteLine("Is everything alright?");
         }
     }
 }
