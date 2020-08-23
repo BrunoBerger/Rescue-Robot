@@ -1,1 +1,1 @@
-controller_joint_names: ['', 'Oberarm', 'Unterarm', 'Hand', ]
+controller_joint_names: ['', 'oberarm', 'unterarm', 'hand', 'hand2', 'finger', ]
