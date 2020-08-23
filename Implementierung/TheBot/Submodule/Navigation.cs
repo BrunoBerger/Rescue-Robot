@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 
 namespace Implementierung
 {
@@ -34,6 +35,8 @@ namespace Implementierung
             
             while (differenzX != 0 || differenzY != 0)
             {
+                // Verlangsamen der einzelnen schritte zur besseren Viusalisierung
+                Thread.Sleep(100);
                 // BACKWARD //////////////////////////////////////////////////////////////////////////////
                 if(differenzY > 0)
                 {
@@ -42,7 +45,8 @@ namespace Implementierung
                     {
                         Console.WriteLine("PosY{0}, PosX{1}",rescuebot.returnYpos(),rescuebot.returnXpos());
                         differenzY = destinationY - rescuebot.returnYpos();
-                    }else
+                    }
+                    else
                     {
                         do
                         {
@@ -66,7 +70,8 @@ namespace Implementierung
                         Console.WriteLine("PosY{0}, PosX{1}",rescuebot.returnYpos(),rescuebot.returnXpos());
                         differenzY = destinationY - rescuebot.returnYpos();
                     }
-                    else{
+                    else
+                    {
                         do
                         {
                             rescuebot.driveLeft();
@@ -88,7 +93,8 @@ namespace Implementierung
                     {
                         Console.WriteLine("PosY{0}, PosX{1}",rescuebot.returnYpos(),rescuebot.returnXpos());
                         differenzX = destinationX - rescuebot.returnXpos();
-                    }else
+                    }
+                    else
                     {
                         do
                         {
@@ -112,7 +118,8 @@ namespace Implementierung
                     {
                         Console.WriteLine("PosY{0}, PosX{1}",rescuebot.returnYpos(),rescuebot.returnXpos());
                         differenzX = destinationX - rescuebot.returnXpos();
-                    }else
+                    }
+                    else
                     {
                          do
                         {
