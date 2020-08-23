@@ -172,18 +172,20 @@ namespace Implementierung
                 //Console.WriteLine("{0}, trav:{1}, Type:{2}",X,X.returnTraversable(),X.GetType());
                 if (X.GetType() == typeof(RadioactiveObstacle))
                 {
+                    Console.WriteLine("Found Radioactive Object at X: {0} and Y: {1}!", X.positionX, X.positionY);
                     measureAndCollectObstacle((RadioactiveObstacle)X,100, 100);
                 }
                 else if(X.GetType() == typeof(Person))
                 {
                     camera.detectPerson();
-                    Console.WriteLine("Found a Person at X: {0} Y: {1} !!", X.positionX, X.positionY);
+                    Console.WriteLine("Found a Person at X: {0} Y: {1}!!", X.positionX, X.positionY);
                     loudspeaker.sendMessage();
                     Console.WriteLine("Stopping the Program. Collected {0}Kg Radioactive Material!", this.currentLoad);
+
+                    // Programm beenden wenn die Person gefunden wurde!
                     Environment.Exit(1);
                 }
             }
-            
         }
 
         public void signalRequest()
