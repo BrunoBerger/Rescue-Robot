@@ -22,7 +22,8 @@ public class tankMovement : MonoBehaviour
     public bool isGrounded;
     public bool senseWater;
 
-    public Vector3 myVelocity;
+    private float potGain;
+    public float maxSpeed;
     public Vector3 currentHeading;
     public Vector3 desiredHeading;
 
@@ -37,7 +38,8 @@ public class tankMovement : MonoBehaviour
 
 
       trackPower = 1500f;
-      propPower = 1800f;
+      propPower = 2400;
+      maxSpeed = 10f;
 
       Debug.Log("Bot_Rescue is ready to roll");
     }
@@ -45,14 +47,15 @@ public class tankMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      userInput = new Vector3(Input.GetAxis("Horizontal"),0f,Input.GetAxis("Vertical"));
       // drawDebugRays();
+      userInput = new Vector3(Input.GetAxis("Horizontal"),0f,Input.GetAxis("Vertical"));
+      potGain = mainBody.velocity.magnitude + leftOutput.magnitude + rightOutput.magnitude;
     }
 
     void FixedUpdate()
     {
       // driving on dry ground
-      if (isGrounded == true)
+      if (isGrounded == true && potGain < maxSpeed)
       {
         if(userInput.z != 0)
         {
@@ -74,7 +77,6 @@ public class tankMovement : MonoBehaviour
         prop.AddRelativeTorque(0, userInput.x * propPower, 0, ForceMode.Impulse);
         prop.AddRelativeForce(new Vector3(0f, 0f, userInput.z) * propPower);
         splash.Play();
-        Debug.DrawRay(transform.position, transform.up*5, Color.white);
       }
       else
       {
