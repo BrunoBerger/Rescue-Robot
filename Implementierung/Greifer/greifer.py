@@ -37,9 +37,9 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("-x", type=float, default=15,
     help="set relative x position")
-    ap.add_argument("-y", type=float, default=-5,
+    ap.add_argument("-y", type=float, default=-7,
     help="set relative y position")
-    ap.add_argument("-z", type=float, default=0,
+    ap.add_argument("-z", type=float, default=2,
     help="set relative z position")
     args = vars(ap.parse_args())
 

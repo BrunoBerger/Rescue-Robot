@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com)
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
      Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
      For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
 <robot
@@ -8,17 +8,17 @@
     name="base_link">
     <inertial>
       <origin
-        xyz="-9.7259E-06 0.53594 0.7999"
+        xyz="-2.6138E-05 0.53594 0.80009"
         rpy="0 0 0" />
       <mass
-        value="3.0727" />
+        value="8.2963" />
       <inertia
-        ixx="0.012272"
-        ixy="2.9731E-06"
-        ixz="2.5472E-05"
-        iyy="0.0083734"
-        iyz="2.9564E-05"
-        izz="0.012523" />
+        ixx="0.033177"
+        ixy="2.1543E-05"
+        ixz="-0.00017853"
+        iyy="0.022608"
+        iyz="-7.7278E-05"
+        izz="0.033768" />
     </inertial>
     <visual>
       <origin
@@ -31,7 +31,7 @@
       <material
         name="">
         <color
-          rgba="0.79216 0.81961 0.93333 1" />
+          rgba="0.89804 0.91765 0.92941 1" />
       </material>
     </visual>
     <collision>
@@ -45,20 +45,20 @@
     </collision>
   </link>
   <link
-    name="drehplatte">
+    name="schulterGelenk">
     <inertial>
       <origin
         xyz="2.2676E-08 0.087777 -9.73E-05"
         rpy="0 0 0" />
       <mass
-        value="3.0727" />
+        value="8.2963" />
       <inertia
-        ixx="0.012269"
-        ixy="-3.7853E-09"
-        ixz="-1.541E-08"
-        iyy="0.0083734"
-        iyz="2.9713E-05"
-        izz="0.012525" />
+        ixx="0.033127"
+        ixy="-1.022E-08"
+        ixz="-4.1606E-08"
+        iyy="0.022608"
+        iyz="8.0225E-05"
+        izz="0.033818" />
     </inertial>
     <visual>
       <origin
@@ -66,12 +66,12 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://RescueBot_Baugruppe.SLDASM/meshes/drehplatte.STL" />
+          filename="package://RescueBot_Baugruppe.SLDASM/meshes/schulterGelenk.STL" />
       </geometry>
       <material
         name="">
         <color
-          rgba="0.79216 0.81961 0.93333 1" />
+          rgba="0.89804 0.91765 0.92941 1" />
       </material>
     </visual>
     <collision>
@@ -80,38 +80,38 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://RescueBot_Baugruppe.SLDASM/meshes/drehplatte.STL" />
+          filename="package://RescueBot_Baugruppe.SLDASM/meshes/schulterGelenk.STL" />
       </geometry>
     </collision>
   </link>
   <joint
-    name="Drehplatt"
+    name="schulter"
     type="fixed">
     <origin
-      xyz="0 -0.8 0.44817"
-      rpy="1.5708 0 0.10036" />
+      xyz="0 -0.799999999999999 0.448167457544184"
+      rpy="1.5707963267949 0 2.86985130632957" />
     <parent
       link="base_link" />
     <child
-      link="drehplatte" />
+      link="schulterGelenk" />
     <axis
       xyz="0 0 0" />
   </joint>
   <link
-    name="oberarm">
+    name="ellenbogen">
     <inertial>
       <origin
-        xyz="0.36125 -6.5238E-09 0.0012661"
+        xyz="0.36125 -1.0481E-07 0.0012658"
         rpy="0 0 0" />
       <mass
-        value="2.5014" />
+        value="5.0028" />
       <inertia
-        ixx="0.0017111"
-        ixy="-3.7229E-09"
-        ixz="-0.0012152"
-        iyy="0.12365"
-        iyz="-4.4685E-09"
-        izz="0.12294" />
+        ixx="0.0034222"
+        ixy="-1.6329E-08"
+        ixz="-0.0024305"
+        iyy="0.24731"
+        iyz="-8.1628E-09"
+        izz="0.24587" />
     </inertial>
     <visual>
       <origin
@@ -119,12 +119,12 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://RescueBot_Baugruppe.SLDASM/meshes/oberarm.STL" />
+          filename="package://RescueBot_Baugruppe.SLDASM/meshes/ellenbogen.STL" />
       </geometry>
       <material
         name="">
         <color
-          rgba="0.5 0.2 0.9 1" />
+          rgba="1 1 1 1" />
       </material>
     </visual>
     <collision>
@@ -133,38 +133,38 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://RescueBot_Baugruppe.SLDASM/meshes/oberarm.STL" />
+          filename="package://RescueBot_Baugruppe.SLDASM/meshes/ellenbogen.STL" />
       </geometry>
     </collision>
   </link>
   <joint
-    name="Oberarm"
+    name="oberarm"
     type="continuous">
     <origin
-      xyz="0 0.203 0.025"
-      rpy="-1.5708 -1.2778 1.5708" />
+      xyz="0 0.202999999999992 0.0249999999999935"
+      rpy="-1.5707963267949 -0.740356965763116 1.5707963267949" />
     <parent
-      link="drehplatte" />
+      link="schulterGelenk" />
     <child
-      link="oberarm" />
+      link="ellenbogen" />
     <axis
       xyz="0 0 1" />
   </joint>
   <link
-    name="unterarm">
+    name="handgelenk">
     <inertial>
       <origin
-        xyz="0.0032998 -7.0657E-09 0.27542"
+        xyz="0.00329981903381138 3.03018172553848E-07 0.275415050864493"
         rpy="0 0 0" />
       <mass
-        value="1.0425" />
+        value="2.08500049128727" />
       <inertia
-        ixx="0.032888"
-        ixy="1.0183E-08"
-        ixz="-0.00040582"
-        iyy="0.033119"
-        iyz="-6.0686E-08"
-        izz="0.00043008" />
+        ixx="0.0657758612518679"
+        ixy="2.30546597680681E-08"
+        ixz="-0.000811638992232931"
+        iyy="0.0662386185749563"
+        iyz="-1.19691438710517E-07"
+        izz="0.000860169924723742" />
     </inertial>
     <visual>
       <origin
@@ -172,12 +172,12 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://RescueBot_Baugruppe.SLDASM/meshes/unterarm.STL" />
+          filename="package://RescueBot_Baugruppe.SLDASM/meshes/handgelenk.STL" />
       </geometry>
       <material
         name="">
         <color
-          rgba="0.79216 0.81961 0.93333 1" />
+          rgba="1 1 1 1" />
       </material>
     </visual>
     <collision>
@@ -186,38 +186,38 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://RescueBot_Baugruppe.SLDASM/meshes/unterarm.STL" />
+          filename="package://RescueBot_Baugruppe.SLDASM/meshes/handgelenk.STL" />
       </geometry>
     </collision>
   </link>
   <joint
-    name="Unterarm"
+    name="unterarm"
     type="continuous">
     <origin
-      xyz="0.745 0 0"
-      rpy="1.8898 1.5708 0" />
+      xyz="0.74500000000001 0 0"
+      rpy="2.65796523927005 1.5707963267949 0" />
     <parent
-      link="oberarm" />
+      link="ellenbogen" />
     <child
-      link="unterarm" />
+      link="handgelenk" />
     <axis
       xyz="1 0 0" />
   </joint>
   <link
-    name="hand">
+    name="handgelenk2">
     <inertial>
       <origin
-        xyz="0.002 -0.00021454 0.063182"
+        xyz="0.0020001 -0.00021441 0.063182"
         rpy="0 0 0" />
       <mass
-        value="0.10222" />
+        value="0.20444" />
       <inertia
-        ixx="0.00029334"
-        ixy="8.3887E-11"
-        ixz="4.649E-11"
-        iyy="0.00029786"
-        iyz="2.0447E-07"
-        izz="1.2944E-05" />
+        ixx="0.00058668"
+        ixy="4.7794E-10"
+        ixz="-8.0139E-11"
+        iyy="0.00059571"
+        iyz="4.0845E-07"
+        izz="2.5888E-05" />
     </inertial>
     <visual>
       <origin
@@ -225,12 +225,12 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://RescueBot_Baugruppe.SLDASM/meshes/hand.STL" />
+          filename="package://RescueBot_Baugruppe.SLDASM/meshes/handgelenk2.STL" />
       </geometry>
       <material
         name="">
         <color
-          rgba="0.79216 0.81961 0.93333 1" />
+          rgba="1 1 1 1" />
       </material>
     </visual>
     <collision>
@@ -239,38 +239,38 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://RescueBot_Baugruppe.SLDASM/meshes/hand.STL" />
+          filename="package://RescueBot_Baugruppe.SLDASM/meshes/handgelenk2.STL" />
       </geometry>
     </collision>
   </link>
   <joint
-    name="Hand"
+    name="hand"
     type="continuous">
     <origin
       xyz="0 0 0.575"
-      rpy="-0.82998 0 0" />
+      rpy="-1.96362785676128 0 0" />
     <parent
-      link="unterarm" />
+      link="handgelenk" />
     <child
-      link="hand" />
+      link="handgelenk2" />
     <axis
       xyz="1 0 0" />
   </joint>
   <link
-    name="finger">
+    name="köchel">
     <inertial>
       <origin
-        xyz="-0.0025449 2.7867E-13 0.056704"
+        xyz="0.0014891 -1.1102E-16 -5.5511E-17"
         rpy="0 0 0" />
       <mass
-        value="0.09972" />
+        value="0.038419" />
       <inertia
-        ixx="1.4127E-05"
-        ixy="-3.4644E-19"
-        ixz="-1.5724E-17"
-        iyy="8.3931E-05"
-        iyz="-2.2446E-20"
-        izz="9.6396E-05" />
+        ixx="3.2401E-05"
+        ixy="-5.5057E-21"
+        ixz="3.9202E-20"
+        iyy="2.5479E-05"
+        iyz="-5.421E-20"
+        izz="7.8708E-06" />
     </inertial>
     <visual>
       <origin
@@ -278,7 +278,60 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://RescueBot_Baugruppe.SLDASM/meshes/finger.STL" />
+          filename="package://RescueBot_Baugruppe.SLDASM/meshes/köchel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.86667 0.9098 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RescueBot_Baugruppe.SLDASM/meshes/köchel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="hand2"
+    type="continuous">
+    <origin
+      xyz="0.00200000000000047 0 0.168317889650684"
+      rpy="2.20889980848183 -1.5707963267949 0" />
+    <parent
+      link="handgelenk2" />
+    <child
+      link="köchel" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="fingergelenk">
+    <inertial>
+      <origin
+        xyz="-0.040008 3.3307E-16 -0.04427"
+        rpy="0 0 0" />
+      <mass
+        value="0.04986" />
+      <inertia
+        ixx="7.0635E-06"
+        ixy="-2.3717E-20"
+        ixz="-7.2289E-20"
+        iyy="4.1966E-05"
+        iyz="-1.117E-20"
+        izz="4.8198E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://RescueBot_Baugruppe.SLDASM/meshes/fingergelenk.STL" />
       </geometry>
       <material
         name="">
@@ -292,21 +345,21 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://RescueBot_Baugruppe.SLDASM/meshes/finger.STL" />
+          filename="package://RescueBot_Baugruppe.SLDASM/meshes/fingergelenk.STL" />
       </geometry>
     </collision>
   </link>
   <joint
-    name="Finger"
-    type="fixed">
+    name="finger"
+    type="continuous">
     <origin
-      xyz="0.066137 0 0.32806"
-      rpy="3.1416 1.5708 0" />
+      xyz="0.124825859230761 0 0"
+      rpy="-3.14159265358979 0 3.14159265358979" />
     <parent
-      link="hand" />
+      link="köchel" />
     <child
-      link="finger" />
+      link="fingergelenk" />
     <axis
-      xyz="0 0 0" />
+      xyz="1 0 0" />
   </joint>
 </robot>

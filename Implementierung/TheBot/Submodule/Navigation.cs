@@ -36,7 +36,7 @@ namespace Implementierung
             while (differenzX != 0 || differenzY != 0)
             {
                 // Verlangsamen der einzelnen schritte zur besseren Viusalisierung
-                Thread.Sleep(100);
+                Thread.Sleep(200);
                 // BACKWARD //////////////////////////////////////////////////////////////////////////////
                 if(differenzY > 0)
                 {
