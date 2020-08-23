@@ -166,6 +166,7 @@ namespace Implementierung
                 motorChainDriveLeft.motorOn();
                 turbine.motorOff();
             }
+
             foreach (Ground X in sourroundings)
             {
                 //Console.WriteLine("{0}, trav:{1}, Type:{2}",X,X.returnTraversable(),X.GetType());
@@ -175,10 +176,9 @@ namespace Implementierung
                 }
                 else if(X.GetType() == typeof(Person))
                 {
-                    Console.WriteLine("Found a Person at X: {0} Y: {1} !!", X.positionX, X.positionY);
                     camera.detectPerson();
+                    Console.WriteLine("Found a Person at X: {0} Y: {1} !!", X.positionX, X.positionY);
                     loudspeaker.sendMessage();
-
                     Console.WriteLine("Stopping the Program. Collected {0}Kg Radioactive Material!", this.currentLoad);
                     Environment.Exit(1);
                 }
