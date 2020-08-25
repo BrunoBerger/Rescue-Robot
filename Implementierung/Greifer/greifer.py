@@ -35,9 +35,9 @@ def getChainPos(my_chain, target_position):
 if __name__ == "__main__":
     # setup cmd-line arguments for custom position
     ap = argparse.ArgumentParser()
-    ap.add_argument("-x", type=float, default=15,
+    ap.add_argument("-x", type=float, default=3,
     help="set relative x position")
-    ap.add_argument("-y", type=float, default=-7,
+    ap.add_argument("-y", type=float, default=2,
     help="set relative y position")
     ap.add_argument("-z", type=float, default=2,
     help="set relative z position")
