@@ -1,10 +1,18 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% put in section-name to indicate author
+\hfill\textnormal{\emph{Name}}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$Figures
+
+%%%
+%This one we'll need most:
 \begin{figure}[H]
   \centering\includegraphics[width=0.4\linewidth]{rXUndYStatSem.png}
   \caption{Abweichung visualisiert\cite{statistikSeminar}}
   \label{fig:rUndXY}
 \end{figure}
+%%%
 
 \begin{wrapfigure}{r}{0.5\textwidth}
     \vspace{-25pt}
@@ -30,14 +38,12 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%
-
+% normal looking link in footnote
 \footnote
     {\href{}
     {}}
-
-
 %%%%%%%%%%%%%%%%%%%%%%%
-
+% Standard-ref
 @misc{REF,
   title = {TITLE},
   author={},
