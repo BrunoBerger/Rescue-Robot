@@ -1,6 +1,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% put in section-name to indicate author
+% put in section-name to indicate author:
 \hfill\textnormal{\emph{Name}}
+
+% after paragraph if multiple people worked on one section:
+\begin{flushright}
+\emph{name}
+\end{flushright}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 $Figures
@@ -12,7 +17,14 @@ $Figures
   \caption{Abweichung visualisiert\cite{statistikSeminar}}
   \label{fig:rUndXY}
 \end{figure}
+
 %%%
+% remove \vspace{} for normal placement
+
+\begin{wrapfigure}{l}{0.7\linewidth}
+\includegraphics[width=\linewidth]{./lion-logo.jpg}
+\caption{This is the former Share\LaTeX{} logo}
+\end{wrapfigure}
 
 \begin{wrapfigure}{r}{0.5\textwidth}
     \vspace{-25pt}
