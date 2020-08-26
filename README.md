@@ -13,7 +13,7 @@ Zur Zielgruppe gehören nicht nur das Industriegewerbe selbst, sondern auch Rett
 #
 ### Einsatzgebiet
 Der Rescue-Robot soll sich autonom auf dem Industriegelände bewegen und sich über Radiosignale navigieren. Hindernisse wie Gesteinsbrocken oder Wasser sollen umfahren oder durchquert werden. Verletzte Personen sollen über den Rescue-Robot nach außen kommunizieren können. Zudem sollen auch radioaktive Gegenstände gesichert werden können.
-![Einsatzgebiet](Diagramme/Subsysteme/Class_Diagram_Firmengelaende.png "Einsatzgebiet")
+![Einsatzgebiet](Diagramme\Subsysteme\Subsystem_Firmengelaende\Premises.png "Einsatzgebiet")
 
 #
 ### Allgemeines zum Projekt
@@ -81,6 +81,13 @@ Die Allgemeine Übersicht über die gesamten Aufgaben ist auf [Trello][trello] z
     <td>NFR8</td>
     <td>Das Fahrzeug muss über geeignete Peripherie verfügen <br>um mit Menschen zu kommunizieren</td>
   </tr>
+  <tr>
+    <td rowspan="4">Wartbarkeit</td>
+    <td>NFR9</td>
+    <td>Motoren oder Turbine müssen leicht zugänglich sein. </td>
+  </tr>
+  <tr>
+ </tr>
 </tbody>
 </table>
 
