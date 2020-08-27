@@ -2,8 +2,6 @@
 \section{Einführung\hfill\textnormal{\emph{Löbel}}}
 Die Domäne Rettungsrobotik verfügt über sehr vielversprechende wirtschaftliche Aspekte. Menschliche Rettungskräfte sind bei Katastrophen Szenarien eine knappe Ressource. Ein einzelner Bediener sollte daher idealerweise eine Vielzahl von Robotern überwachen. Beim Einsatz solcher Rettungsroboter ist ein hohes Maß an Autonomie gefordert. Sie begegnen einer Vielzahl unbekannter Objekte. Sie sollten in der Lage sein, Objekte oder ihre Umgebung zu erkennen und spezifiziert darauf zu reagieren. Es gibt zwei Entwicklungsziele, die schwer zu kombinieren sind. Zum einen ist für die Umsetzung eines autonomen Systems High-Technology notwendig. Zum anderen gibt es den Bedarf möglichst einfache und kostengünstige Systeme zu entwickeln \cite{birk2006rescue}. Bei diesem Projekt des "Rescue Robots“ liegt der Hauptfokus zunächst auf der Umsetzung der Funktionalität.
 
-\hfill mds
-
 \hfill August 27, 2020
 
 \subsection{Produktübersicht}
@@ -16,7 +14,7 @@ Der Rescue Robot soll auf einem Industriegelände, auf dem es eine Explosion gab
 \end{figure}
 
 \subsection{Systemumgebung}
-Der Rescue Robot soll das Firmengelände autonom erkunden können. Hierfür soll er Radiosignalen folgen können. Diese werden von Funktürmen auf dem Firmengelände gesendet. Das Firmengelände ist durch Mauern begrenzt. Durch die Explosion befinden sich auf dem Gelände unter anderem Gesteinsbrocken, welche umfahren werden müssen. Aber auch Gegenstände, die je nach radioaktiver Strahlung, aufgesammelt werden müssen. Das Firmengelände besteht hauptsächlich aus festem Untergrund. Jedoch ist durch die Explosion auch ein Wasserloch entstanden, welches der Roboter überqueren soll. Zusätzlich wird die Sicht durch Nebel oder Rauch erschwert. Außerdem können sich verletzte Personen auf dem Gelände befinden wie in Abb.\ref{Systemumgebung} erkennen. 
+Der Rescue Robot soll das Firmengelände autonom erkunden können. Hierfür soll er Radiosignalen folgen können. Diese werden von Funktürmen auf dem Firmengelände gesendet. Das Firmengelände ist durch Mauern begrenzt. Durch die Explosion befinden sich auf dem Gelände unter anderem Gesteinsbrocken, welche umfahren werden müssen. Aber auch Gegenstände, die je nach radioaktiver Strahlung, aufgesammelt werden müssen. Das Firmengelände besteht hauptsächlich aus festem Untergrund. Jedoch ist durch die Explosion auch ein Wasserloch entstanden, welches der Roboter überqueren können soll. Zusätzlich wird die Sicht durch Nebel oder Rauch erschwert. Außerdem können sich verletzte Personen auf dem Gelände befinden. In Abb.\ref{Systemumgebung} ist die Systemumgebung, das Firmengelände "Premises" als Klassendiagramm dargestellt. 
 
 \begin{figure}[H]
   \centering\includegraphics[width=1\linewidth]{Premises.png}
@@ -33,7 +31,7 @@ Aus dem beschriebenen Szenario lassen sich folgende Anforderungen festhalten, si
   \label{Requirements}
 \end{figure}
 
-Die funktionalen Anforderungen ergeben folgendes Use Case Diagram (Abb.\ref{UseCase}), welche das System beschreiben. Der Rescue Robot soll sich sowohl an Land als auch im Wasser fortbewegen können. Hierzu muss er mittels eines Sensors erkennen können, ob er sich an Land oder Wasser befindet. Zudem muss der Rescue Robot Radiosignale empfangen und diesen folgen können. Trifft der Roboter auf radioaktive Objekte sollen diese eingesammelt werden. Dazu muss der Roboter über einen beweglichen Greifer verfügen und greifen können. Außerdem soll mit Personen, die sich noch auf dem Gelände befinden, kommuniziert werden können. Der Roboter muss deshalb über die geeignete Peripherie wie Kamera, Lautsprecher und Mikrophon verfügen.
+Die funktionalen Anforderungen ergeben folgendes Use Case Diagram (Abb.\ref{UseCase}), welche das System beschreiben. Der Rescue Robot soll sich sowohl an Land als auch im Wasser fortbewegen können. Hierzu muss er mittels eines Sensors erkennen können, ob er sich an Land oder im Wasser befindet. Zudem muss der Rescue Robot Radiosignale empfangen und diesen folgen können. Trifft der Roboter auf radioaktive Objekte sollen diese eingesammelt werden. Dazu muss der Roboter über einen beweglichen Greifer verfügen und greifen können. Außerdem soll mit Personen, die sich noch auf dem Gelände befinden, kommuniziert werden können. Der Roboter muss deshalb über die geeignete Peripherie wie Kamera, Lautsprecher und Mikrophon verfügen.
 
 \begin{figure}[H]
   \centering\includegraphics[width=1\linewidth]{Use Case Model.png}

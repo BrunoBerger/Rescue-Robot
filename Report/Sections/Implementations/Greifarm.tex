@@ -14,13 +14,13 @@ was viel Zeit in Anspruch nehmen würde.
 Deshalb wurde hierfür die Solidworks-Erweiterung URDF-Exporter benutzt.
 \footnote{http://wiki.ros.org/sw\_urdf\_exporter}
 
-Diese ermöglicht alle nötigen Informationen automatisch zu generieren.
+Diese ermöglicht es alle nötigen Informationen automatisch zu generieren.
 Dazu werden alle relevanten Bauteile des Modells ausgewählt
 und die Erweiterung erkennt nun die Rotationsachsen der Verbindungen 
 und die Distanz und Position der Gelenke.
 Diese Daten werden dann im URDF als exportiert,
 was für "Unified Robot Description Format" steht 
-eine weit verbreitete XML-Spezifikation ist.\cite{mathWorks}
+eine weit verbreitete XML-Spezifikation für Roboter ist.\cite{mathWorks}
 \\
 
 Unser Python-Skript generiert dann mit Hilfe des ikpy Package
@@ -39,7 +39,7 @@ mit dem Matplotlib-Package visualisiert werden.
 
 Alternativ könnten diese Daten auch an einen tatsächlichen Roboter-Arm weitergegeben werden.
 Der Rescue-Robot müsste nur die relative Position des zu greifenden Objekts berechnen
-und könnte dann das Objekt greifen und dann eine Position über dem Container anfahren.
+und könnte dann das Objekt greifen und dann eine Position über dem Container anfahren.(FR3)
 
 Zum jetzigen Zeitpunkt gibt es noch einige Probleme mit der Kette,
 die wahrscheinlich an einer falschen Anwendung der Solidworks-Erweiterung liegen.
