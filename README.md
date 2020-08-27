@@ -8,7 +8,7 @@ entwickelt werden, der bei einem Industrieunfall wie einer Explosion seinen Eins
 #
 ### Produkteinsatz
 Zur Zielgruppe gehören nicht nur das Industriegewerbe selbst, sondern auch Rettungsdienste, die direkten Angestellten der Firma, sowie das Firmengelände selbst.
-![Systemumgebung](Diagramme/System_Umgebung.png "Systemumgebung")
+![Systemumgebung](Diagramme\System_Umgebung.png "Systemumgebung")
 
 #
 ### Einsatzgebiet
