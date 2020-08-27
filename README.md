@@ -8,12 +8,12 @@ entwickelt werden, der bei einem Industrieunfall wie einer Explosion seinen Eins
 #
 ### Produkteinsatz
 Zur Zielgruppe gehören nicht nur das Industriegewerbe selbst, sondern auch Rettungsdienste, die direkten Angestellten der Firma, sowie das Firmengelände selbst.
-![Systemumgebung](Diagramme\System_Umgebung.png "Systemumgebung")
+![Systemumgebung](Diagramme/System_Umgebung.png "Systemumgebung")
 
 #
 ### Einsatzgebiet
 Der Rescue-Robot soll sich autonom auf dem Industriegelände bewegen und sich über Radiosignale navigieren. Hindernisse wie Gesteinsbrocken oder Wasser sollen umfahren oder durchquert werden. Verletzte Personen sollen über den Rescue-Robot nach außen kommunizieren können. Zudem sollen auch radioaktive Gegenstände gesichert werden können.
-![Einsatzgebiet](Diagramme\Subsysteme\Subsystem_Firmengelaende\Premises.png "Einsatzgebiet")
+![Einsatzgebiet](Diagramme/Subsysteme/Subsystem_Firmengelaende/Premises.png "Einsatzgebiet")
 
 #
 ### Allgemeines zum Projekt
